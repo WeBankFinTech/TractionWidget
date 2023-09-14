@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "strictNullChecks": true,
+        "jsx": "preserve",
+        "module": "ES6",
+        "moduleResolution": "Node",
+        "declaration": true,
+        "declarationDir": "./types",
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "composite": true,
+        "target": "ES6",
+        "types": [
+            "jest"
+        ],
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+    },
+    "include": [
+        "global.d.ts",
+        "scripts/**/*.js",
+        "packages/**/*.ts",
+        "packages/**/*.tsx",
+        "packages/**/*.vue",
+        "docs/.vitepress/**/*.vue",
+        "docs/.vitepress/**/*.js",
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

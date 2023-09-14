@@ -1,0 +1,13 @@
+node_modules
+.temp
+.cache
+.DS_Store
+packages/bdp-design/node_modules
+packages/bdp-design/es
+es
+packages/bdp-design/dist
+dist
+docs/.vitepress/custom/components/demoCode.json
+docs/components
+docs/.vitepress/dist/
+docs/.vitepress/cache/

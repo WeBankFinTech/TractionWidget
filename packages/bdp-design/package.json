@@ -1,0 +1,36 @@
+{
+  "name": "@webank/bdp-design",
+  "version": "1.7.1",
+  "description": "集合大数据项目使用到的通用组件和工具函数",
+  "main": "dist/bdp-design.min.js",
+  "module": "es/components/index.js",
+  "files": [
+    "dist",
+    "es",
+    "icon",
+    "types"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@git.weoa.com:mumblefe/bdp-web-components.git"
+  },
+  "keywords": [
+    "bdp"
+  ],
+  "author": "lucaszhu@webank.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "http://git.weoa.com/mumblefe/bdp-web-components"
+  },
+  "homepage": "http://10.107.105.248/bdp-design/",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@fesjs/fes-design": "0.7.32"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,vue,fes,wxa}": "eslint --fix"
+  },
+  "types": "es/components/index.d.ts"
+}

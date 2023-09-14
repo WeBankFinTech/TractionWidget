@@ -1,0 +1,22 @@
+.default:
+  script:
+    - export PATH="/data/node16/bin:$PATH"
+    - wnpm i
+    - ./node_modules/.bin/lerna bootstrap
+    - wnpm run $ENV
+    - rm -rf *.zip
+    - fes-upload-aomp --dist="docs/.vitepress/dist" --sys=PMBANK-WEBPUB --tplId=69470  --version="{{PACKAGEJSON.version}}_$ENV"
+  stage: build
+  variables:
+    ENV: $ENV
+  tags:
+    - wxapp
+  environment:
+    name: $ENV_NAME
+
+test:
+  extends: .default
+  variables:
+    ENV: "docsBuild"
+  only:
+    - test
