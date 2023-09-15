@@ -2,8 +2,7 @@ name: TXDeploy
 on:
   push:
     branches:
-      - master
-      - monday
+      - docs
     paths:
       - 'packages/**/**'
       - 'docs/**/**'
