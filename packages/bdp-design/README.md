@@ -18,3 +18,4 @@ import { table } from '@fesjs/traction-widget'
   <table></table>
 </template>
 ```
+
