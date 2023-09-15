@@ -5,7 +5,9 @@ on:
       - master
       - moday
     paths:
-      - 'src/**/**'
+      - 'packages/**/**'
+      - 'docs/**/**'
+      - 'scripts/**/**'
       - 'package.json'
 
 jobs:
