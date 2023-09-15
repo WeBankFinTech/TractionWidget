@@ -2,7 +2,7 @@
 
 1. 安装依赖
 ```
-wnpm i -S @webank/bdp-design
+wnpm i -S @fesjs/traction-widget
 ```
 如果你没有安装`wnpm`的话，请移步[http://wnpm.weoa.com/package/@webank/wnpm](http://wnpm.weoa.com/package/@webank/wnpm)安装
 
