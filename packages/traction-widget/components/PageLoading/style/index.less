@@ -1,0 +1,46 @@
+.page-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-block{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    .tip{
+        margin-bottom: 103px;
+        text-align: center;
+        .tip-text {
+            color:#93949B;
+            margin-bottom: 32px;
+        }
+    }
+}
+
+.page {
+    height: 600px;
+}
+
+.normal {
+    height: 600px;
+}
+
+.loading{
+    background: url('../../assets/images/loading.png') center no-repeat;
+}
+.emptyInitResult{
+    background: url('../../assets/images/emptyInitResult.svg') center no-repeat;
+}
+.emptyQueryResult{
+    background: url('../../assets/images/emptyQueryResult.svg') center no-repeat;
+}
+.noPermissions{
+    background: url('../../assets/images/noPermissions.svg') center no-repeat;
+}

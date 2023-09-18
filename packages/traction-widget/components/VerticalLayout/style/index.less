@@ -1,0 +1,42 @@
+.wd-vertical-layout {
+    display: flex;
+    height: 100%;
+    background:  #f7f8fa;
+    flex-direction: column;
+    .vertical-nav {
+        overflow-y: hidden;
+        overflow-x: auto;
+        width: 100%;
+        height: 54px;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 24px;
+        background: #fff;
+        box-shadow: 0px 4px 14px 0px rgba(0, 0 ,0 ,0.2);
+        .vertical-menuInfo {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            .logo {
+                margin-right: 12px;
+            }
+        }
+        .vertical-userInfo {
+            display: flex;
+            align-items: center;
+            color: #63656f;
+            margin-left: 12px;
+        }
+    }
+    .vertical-nav::-webkit-scrollbar {
+        display: none;
+    }
+    .vertical-body {
+        overflow-y: auto;
+        position: relative;
+        height: 100%;
+    }
+}

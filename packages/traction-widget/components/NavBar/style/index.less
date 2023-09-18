@@ -1,0 +1,33 @@
+.wd-nav-bar-page {
+    position: relative;
+    padding: 0 20px 0 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 54px;
+    color: #0F1222;
+    background-color: #fff;
+    border-radius: 4px;
+    &::after{
+        content: ' ';
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        width: 50px;
+        height: 100%;
+        background: linear-gradient(-90deg, rgb(255 255 255), rgb(255 255 255 / 20%));;
+    }
+    :deep(.fes-scrollbar-container){
+        display: flex;
+    }
+    .fes-menu.is-horizontal {
+        border-bottom: 1px #f1f1f2;
+    }
+}
+.wd-nav-bar-drawer-parent {
+    margin-left: -8px;
+    margin-top: -16px;
+    border-bottom: 1px solid #f1f1f2
+}

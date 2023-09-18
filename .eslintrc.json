@@ -1,0 +1,34 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "vue-eslint-parser",
+    "extends": [
+        "plugin:vue/vue3-essential",
+        "standard-with-typescript"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "extraFileExtensions": [".vue"],
+        "parser": "@typescript-eslint/parser",
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": ["./tsconfig.json", "./packages/traction-widget/tsconfig.json"],
+        "parse": "@typescript-eslint/parser"
+    },
+    "plugins": [
+        "vue",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "vue/multi-word-component-names": "off",
+        "@typescript-eslint/strict-boolean-expressions": "warn",
+        "@typescript-eslint/prefer-nullish-coalescing": "warn",
+        "semi": "off",
+        "indent": "off",
+        "@typescript-eslint/indent":  ["error", 4],
+        "@typescript-eslint/semi": ["error", "always"]
+    }
+}

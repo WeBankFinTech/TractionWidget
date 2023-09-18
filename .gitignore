@@ -1,0 +1,16 @@
+node_modules
+.temp
+.cache
+.DS_Store
+packages/traction-widget/node_modules
+packages/traction-widget/es
+es
+packages/traction-widget/dist
+dist
+docs/.vitepress/custom/components/demoCode.json
+docs/components
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+package-lock.json
+packages/traction-widget/package-lock.json
+.gitlab-ci.yml

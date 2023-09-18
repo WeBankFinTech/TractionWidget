@@ -1,0 +1,36 @@
+{
+  "name": "@fesjs/traction-widget",
+  "version": "1.7.2",
+  "description": "集合大数据项目使用到的通用组件和工具函数",
+  "main": "dist/traction-widget.min.js",
+  "module": "es/components/index.js",
+  "files": [
+    "dist",
+    "es",
+    "icon",
+    "types"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:WeBankFinTech/TractionWidget.git"
+  },
+  "keywords": [
+    "traction"
+  ],
+  "author": "lucaszhu@webank.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WeBankFinTech/TractionWidget"
+  },
+  "homepage": "https:/traction-widget.mumblefe.cn",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@fesjs/fes-design": "0.8.7"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,vue,fes,wxa}": "eslint --fix"
+  },
+  "types": "es/components/index.d.ts"
+}
