@@ -1,6 +1,6 @@
 {
   "name": "@fesjs/traction-widget",
-  "version": "1.7.2",
+  "version": "1.7.4",
   "description": "集合大数据项目使用到的通用组件和工具函数",
   "main": "dist/traction-widget.min.js",
   "module": "es/components/index.js",
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/WeBankFinTech/TractionWidget"
   },
-  "homepage": "https:/traction-widget.mumblefe.cn",
+  "homepage": "https://mumblefe.cn/p/traction-widget/",
   "publishConfig": {
     "access": "public"
   },
