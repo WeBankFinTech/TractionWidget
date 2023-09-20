@@ -14,7 +14,7 @@ const ssrTransformCustomDir = () => ({
     needRuntime: true
 });
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/traction-widget/' : '/';
+const BASE_URL = process.env.NODE_ENV === 'production' ? '/p/traction-widget/' : '/';
 
 export default defineConfig({
     base: BASE_URL,
