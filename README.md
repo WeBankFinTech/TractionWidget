@@ -22,13 +22,13 @@ Traction Widget 包含UI和函数两大部分。像汽车部件需要一些连�
 
 ● 提效
 
-    ○ 收纳高频组件工具，无需反复造轮子，业务开发时，可优先在Traction Widget寻找最佳解决方案
+- 收纳高频组件工具，无需反复造轮子，业务开发时，可优先在Traction Widget寻找最佳解决方案
   
 ● 维护性高
 
-    ○ 对于共性问题缺陷，可一键升级组件解决，无需逐一修改打补丁
+- 对于共性问题缺陷，可一键升级组件解决，无需逐一修改打补丁
   
-    ○ 开发者编写代码风格各异，Traction Widget提供了一套代码共识，依赖程度越高，代码风格越统一，出现问题时定位也会越高效。
+- 开发者编写代码风格各异，Traction Widget提供了一套代码共识，依赖程度越高，代码风格越统一，出现问题时定位也会越高效。
 
 ## 组件概览
 ![](https://github.com/WeBankFinTech/TractionWidget/blob/dev_monday/packages/traction-widget/components/assets/images/componentOverview.png)
