@@ -34,9 +34,11 @@ Traction Widget 包含UI和函数两大部分，是一个大型中台通用业�
 
 针对大数据前端操作UI,Traction Widget在若干项目中均有应用。如：
 
-[Qualitis](https://github.com/WeBankFinTech/Qualitis)
-[DataSphereStudio](https://github.com/WeBankFinTech/DataSphereStudio)
-[linkis](https://github.com/apache/linkis)
+- 数据质量管理平台 [Qualitis](https://github.com/WeBankFinTech/Qualitis)
+
+- 数据应用开发管理集成框架 [DataSphereStudio](https://github.com/WeBankFinTech/DataSphereStudio)
+
+- 计算中间件 [linkis](https://github.com/apache/linkis)
 
 ## 组件概览
 ![](https://github.com/WeBankFinTech/TractionWidget/blob/dev_monday/packages/traction-widget/components/assets/images/componentOverview.png)
