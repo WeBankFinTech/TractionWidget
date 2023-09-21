@@ -20,7 +20,7 @@ export default defineConfig({
     base: BASE_URL,
     lang: 'zh-CN',
     title: '@fesjs/traction-widget',
-    description: '集合大数据前端使用的通用组件和工具函数',
+    description: '集合大型中台前端使用的通用组件和工具函数',
     vite: {
         define: {
             __VUE_OPTIONS_API__: false
