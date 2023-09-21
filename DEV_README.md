@@ -1,4 +1,4 @@
-# 大数据项目使用到的通用组件和工具函数
+# 大型中台项目使用到的通用组件和工具函数
 
 本框架基于[VUEJS 3.x](https://cn.vuejs.org/)和[fes-design](https://fes-design.mumblefe.cn/)设计，使用`jsx`语法编写
 

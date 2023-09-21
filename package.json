@@ -1,7 +1,7 @@
 {
   "name": "@fesjs/traction-widget",
   "version": "1.7.4",
-  "description": "集合大数据项目使用到的通用组件和工具函数",
+  "description": "集合大型中台项目使用到的通用组件和工具函数",
   "scripts": {
     "docs:dev": "npm run build && vitepress dev docs",
     "docs:build": "npm run build && node scripts/generate-doc.js && vitepress build docs",
