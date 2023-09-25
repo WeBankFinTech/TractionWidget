@@ -1,7 +1,7 @@
 {
   "name": "@fesjs/traction-widget",
-  "version": "1.7.3",
-  "description": "集合大数据项目使用到的通用组件和工具函数",
+  "version": "1.7.4",
+  "description": "集合大型中台项目使用到的通用组件和工具函数",
   "main": "dist/traction-widget.min.js",
   "module": "es/components/index.js",
   "files": [
