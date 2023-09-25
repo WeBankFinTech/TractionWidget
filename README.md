@@ -20,7 +20,7 @@ Traction Widget 包含UI和函数两大部分，是一个大型中台通用业�
 
 ## 应用领域
 
-在微众银行典型的大型中台项目中，目前使用到的Traction Widget的项目有：
+在微众银行典型的大型中台项目中，目前使用到Traction Widget的项目有：
 
 - 数据应用开发管理集成框架 [DataSphereStudio](https://github.com/WeBankFinTech/DataSphereStudio)
 
@@ -28,7 +28,7 @@ Traction Widget 包含UI和函数两大部分，是一个大型中台通用业�
 
 - 数据质量管理平台 [Qualitis](https://github.com/WeBankFinTech/Qualitis)
 
-将来还会有跟多的平台接入
+将来还会有更多的平台接入
 
 ## 框架说明
 
