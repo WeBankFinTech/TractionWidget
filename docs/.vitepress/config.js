@@ -100,6 +100,7 @@ export default defineConfig({
                         { text: 'BVerticalLayout', link: '/components/BVerticalLayout' },
                         { text: 'BTablePage', link: '/components/BTablePage' },
                         { text: 'BNavBar', link: '/components/BNavBar'},
+                        { text: 'BNavHeader', link: '/components/BNavHeader'},
                     ]
                 }
             ],

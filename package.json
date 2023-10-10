@@ -28,7 +28,8 @@
     "url": "git@github.com:WeBankFinTech/TractionWidget.git"
   },
   "keywords": [
-    "traction","widget"
+    "traction",
+    "widget"
   ],
   "author": "lucaszhu@webank.com",
   "license": "MIT",
