@@ -35,3 +35,4 @@ app.use(BHorizontalLayout);
 ## 注意事项
 1. BHorizontalLayout为根元素，组件会占满屏幕高度。
 2. 布局组件，html的height为100%。
+3. 菜单支持根据路径匹配到根菜单进行展开，根菜单需配置路径value
