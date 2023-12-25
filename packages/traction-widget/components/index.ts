@@ -8,6 +8,7 @@ import { BVerticalLayout } from './VerticalLayout';
 import { BSearch } from './Search';
 import { BTablePage } from './TablePage';
 import { BNavBar } from './NavBar';
+import { BNavHeader } from './NavHeader';
 
 const components = [
     BTagsPanel,
@@ -17,7 +18,8 @@ const components = [
     BVerticalLayout,
     BSearch,
     BTablePage,
-    BNavBar
+    BNavBar,
+    BNavHeader
 ];
 
 const install = (app: any): any => {
@@ -42,7 +44,8 @@ export {
     BVerticalLayout,
     BSearch,
     BTablePage,
-    BNavBar
+    BNavBar,
+    BNavHeader
 };
 
 export default {
@@ -60,5 +63,6 @@ export default {
     BVerticalLayout,
     BSearch,
     BTablePage,
-    BNavBar
+    BNavBar,
+    BNavHeader
 };

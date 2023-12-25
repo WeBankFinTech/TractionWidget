@@ -11,6 +11,7 @@
                     :options="props.menus"
                     :collapsed="isSideBarCollapse"
                     @select="onMenuClick"
+                    :expandedKeys="expandedKeys"
                 ></FMenu>
             </div>
             <div class="collapse-btn" @click="toggleSideBar">
@@ -27,7 +28,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, computed, useSlots } from 'vue';
+import { defineProps, defineEmits, ref, computed, useSlots, watchEffect } from 'vue';
 import { FMenu } from '@fesjs/fes-design';
 import { RightOutlined, LeftOutlined } from '@fesjs/fes-design/icon';
 
@@ -79,6 +80,16 @@ const isSideBarCollapse = ref(false);
 const toggleSideBar = () => {
     isSideBarCollapse.value = !isSideBarCollapse.value;
 };
+
+const expandedKeys = ref<string[]>([]);
+watchEffect(() => {
+    if(curPath.value) {
+        // 如/train/workflow，匹配到根路径，展开/train菜单
+        const regex = /^\/\w+/;
+        const match = curPath.value.match(regex);
+        if (match) expandedKeys.value = [match[0]];
+    }
+})
 
 </script>
 
