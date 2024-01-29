@@ -3,8 +3,9 @@
        <FModal
         :show="show"
         :top="50"
-        :width="500"
+        :width="600"
         :maskClosable="false"
+        :getContainer="getContainer"
         @ok="updateHeaders"
         @cancel="reductionHeaders"
         @update:show="$emit('update:show', $event)"
@@ -103,6 +104,11 @@ const props = defineProps({
         type: String,
         required: false,
         default: ''
+    },
+    getContainer: {
+        type: Function,
+        required: false,
+        default: () => document.body
     }
 });
 const emit = defineEmits(['update:headers', 'update:show']);
