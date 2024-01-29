@@ -34,5 +34,5 @@ npm i -S @fesjs/traction-widget
 </scirpt>
 ```
 详细组件说明请移步<a href="components/BTagsPanel" rel="noreferrer">组件</a> <br />
-详细函数说明请移步<a href="utils/login" rel="noreferrer">函数</a>
+详细函数说明请移步<a href="utils/isIE" rel="noreferrer">函数</a>
 :::
