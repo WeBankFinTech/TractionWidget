@@ -30,6 +30,7 @@ app.use(BTableHeaderConfig);
 | show          | 控制弹窗显隐（v-model）                                                                                                                         | Boolean                              | false  | 是       |
 | type          | 缓存设置标识，建议每个表格都适用不同的标识<br>1、设置该属性时，设置将会被保存到当前浏览器的 localStorage<br>2、未设置该属性时，设置仅为当次有效 | String                               | ''     | 否       |
 
+| getContainer          | 表头设置Modal挂载的元素，不设置时默认为body | Function                              | () => document.body     | 否       |
 ### Col Props
 
 | 属性    | 说明                                                    | 类型    | 是否必须 |
