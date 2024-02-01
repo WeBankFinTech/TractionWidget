@@ -32,6 +32,12 @@ import { defineProps, defineEmits, ref, computed, useSlots, watchEffect } from '
 import { FMenu } from '@fesjs/fes-design';
 import { RightOutlined, LeftOutlined } from '@fesjs/fes-design/icon';
 
+interface MenuItem {
+    label: string;
+    value: string;
+    icon?: any;
+    children?: MenuItem[];
+}
 const isSlot = !!useSlots().top;
 const props = defineProps({
     // 当前选择的菜单项
@@ -40,10 +46,9 @@ const props = defineProps({
         require: true,
         default: ''
     },
-
     // 传入的菜单数据
     menus: {
-        type: Array,
+        type: Array<MenuItem>,
         require: true,
         default: () => []
     },
@@ -81,15 +86,30 @@ const toggleSideBar = () => {
     isSideBarCollapse.value = !isSideBarCollapse.value;
 };
 
-const expandedKeys = ref<string[]>([]);
-watchEffect(() => {
-    if(curPath.value) {
-        // 如/train/workflow，匹配到根路径，展开/train菜单
-        const regex = /^\/\w+/;
-        const match = curPath.value.match(regex);
-        if (match) expandedKeys.value = [match[0]];
+const expandedKeys = ref<string[] | null>([]);
+
+
+function findParentPath (tree: MenuItem[], target: string): string[] | null {
+    for (const node of tree) {
+        if (node.value === target) {
+            return [node.value];
+        }
+
+        if (node.children && node.children.length > 0) {
+            const childPath = findParentPath(node.children, target);
+            if (childPath !== null) {
+                return [node.value, ...childPath];
+            }
+        }
     }
-})
+
+    return null;
+}
+watchEffect(() => {
+    if (curPath.value) {
+        expandedKeys.value = findParentPath(props.menus, curPath.value);
+    }
+});
 
 </script>
 
