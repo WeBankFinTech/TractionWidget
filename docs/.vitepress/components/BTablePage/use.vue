@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BTablePage :isLoading="isLoading" :actionType="actionType" :loadingText="loadingText">
+        <BTablePage>
             <template v-slot:search>
                 <BSearch v-model:form="searchForm"  @search="handleSearch" @reset="handleReset">
                     <template v-slot:form>
@@ -28,6 +28,9 @@
             </template>
             <template v-slot:table>
                 <f-table :data="tableShowLists">
+                    <template #empty>
+                        <BPageLoading :actionType="actionType"></BPageLoading>
+                    </template>
                     <f-table-column prop="id" label="ID" :width="80" ellipsis />
                     <f-table-column prop="cn_name" label="中文名称" :width="160" ellipsis />
                     <f-table-column prop="en_name" label="英文名称" :width="160" ellipsis />
@@ -91,7 +94,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { BTablePage, BSearch } from '@fesjs/traction-widget';
+import { BTablePage, BSearch, BPageLoading} from '@fesjs/traction-widget';
 import { FInput,FButton,FTable, FTableColumn, FPagination,FDrawer } from '@fesjs/fes-design';
 import { onMounted, ref, reactive, nextTick } from 'vue';
 
@@ -104,11 +107,6 @@ const searchForm = ref({})
 const isLoading = ref<boolean>(false);
 const actionType = ref<string>('loading');
 const showDrawer = ref<boolean>(false);
-const loadingText = {
-    loading: '自定义Loading文字',
-    emptyInitResult: '这里还没有数据. . .',
-    emptyQueryResult: '没有符合条件的结果. . .'
-};
 const generateData = () => {
     const data = [];
     for (let i=0; i<99; i++) {
@@ -138,6 +136,7 @@ const tableAction = [
 const fetchTableData = () => {
     isLoading.value = true;
     actionType.value = 'loading';
+    tableShowLists.value = [];
     setTimeout(() => {
         tableShowLists.value = tableLists.value.slice((pagination.current-1)*pagination.size, pagination.current*pagination.size);
         isLoading.value = false;
