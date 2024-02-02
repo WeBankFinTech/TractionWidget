@@ -43,7 +43,8 @@ const props = defineProps({
 
     // 传入的菜单数据
     menus: {
-        type: Array,
+        // eslint-disable-next-line no-use-before-define
+        type: Array<MenuItem>,
         require: true,
         default: () => []
     },
@@ -81,15 +82,37 @@ const toggleSideBar = () => {
     isSideBarCollapse.value = !isSideBarCollapse.value;
 };
 
-const expandedKeys = ref<string[]>([]);
-watchEffect(() => {
-    if(curPath.value) {
-        // 如/train/workflow，匹配到根路径，展开/train菜单
-        const regex = /^\/\w+/;
-        const match = curPath.value.match(regex);
-        if (match) expandedKeys.value = [match[0]];
+const expandedKeys = ref<string[] | null>([]);
+interface MenuItem {
+    label: string;
+    value: string;
+    icon?: any;
+    children?: MenuItem[];
+}
+
+function findParentPath (tree: MenuItem[], target: string): string[] | null {
+    for (const node of tree) {
+        if (node.value === target) {
+            return [node.value];
+        }
+
+        if (node.children && node.children.length > 0) {
+            const childPath = findParentPath(node.children, target);
+            if (childPath !== null) {
+                return [node.value, ...childPath];
+            }
+        }
     }
-})
+
+    return null;
+}
+watchEffect(() => {
+    if (curPath.value) {
+        console.log('当前路径', curPath.value, props.menus, findParentPath(props.menus, curPath.value));
+        // 如/train/workflow，匹配到根路径，展开/train菜单
+        expandedKeys.value = findParentPath(props.menus, curPath.value);
+    }
+});
 
 </script>
 
