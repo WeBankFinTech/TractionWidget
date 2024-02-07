@@ -5,7 +5,7 @@
             </FEllipsis>
         </FTag>
         <FInput v-if="showTagInput" ref="tagInputRef" v-model="tempTagInput" class="input-nef-tag" size="small"
-            :maxlength="maxlength" :showWorldLimit="showWordLimit" @keyup.enter="addNewTag" @blur="addNewTag">
+            :maxlength="maxlength" :showWordLimit="showWordLimit" @keyup.enter="addNewTag" @blur="addNewTag">
         </FInput>
         <FButton v-else v-show="numberLimit === 0 || tags.length < numberLimit" :disabled="disabled" class="button-nef-tag" @click="toggleTagInput">
             <PlusOutlined />添加标签
@@ -36,8 +36,8 @@ const props = defineProps({
     },
     // 输入校验
     regex: {
-        type: String,
-        default: '',
+        type: RegExp,
+        default: null,
     },
     // 校验错误提示
     regexTip: {
@@ -52,7 +52,7 @@ const props = defineProps({
     // 是否展示输入长度
     showWordLimit: {
         type: Boolean,
-        defalut: false,
+        default : false,
     },
     // 是否可编辑
     disabled: {
@@ -63,19 +63,16 @@ const props = defineProps({
     size: {
         type: String,
         default: 'middle',
-        reuqire: false
     },
     // 主题，可选值：dark、light、plain
     effect: {
         type: String,
         default: 'light',
-        reuqire: false
     },
     // 类型，可选值：default、success、info、warning、danger
     type: {
         type: String,
         default: 'default',
-        reuqire: false
     },
     // 双向绑定的标签数据
     tags: {
@@ -115,8 +112,7 @@ const addNewTag = () => {
     if (notNull(tempTagInput.value)) {
         let flag = true;
         if (props.regex) {
-            const regex = new RegExp(props.regex);
-            flag = regex.test(tempTagInput.value)
+            flag = props.regex.test(tempTagInput.value)
         }
         if( flag) {
             if ( props.isUnique && datasource.tags.find((item: any) => item === tempTagInput.value)) {

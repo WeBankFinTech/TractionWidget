@@ -21,7 +21,7 @@ app.use(BTagsPanel);
 --USEDISABLED
 
 ### 长度限制
-支持限制单标签长度，样例设置标签最大长度为8。
+支持限制单标签长度，样例设置标签最大长度为8,设置展示当前输入长度。
 --USElIMIT
 
 ### 数量限制
@@ -51,6 +51,7 @@ app.use(BTagsPanel);
 | type |  类型，可选值：default、success、info、warning、danger | string|default|
 | disabled | 是否不可编辑 | boolean|false|
 | maxlength | 单标签最大长度 | number|25|
+| showWordLimit | 是否显示输入内容长度统计 | boolean|false|
 | regex | 是否自定义输入标签校验 | string|''|
 | regexTip | 标签校验错误提示语 | string|'标签输入不符合校验规则'|
 | isUnique | 标签是否不可重复添加 | boolean|false|

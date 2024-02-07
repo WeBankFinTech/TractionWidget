@@ -1,5 +1,5 @@
 <template>
-    <BTagsPanel v-model:tags="tags" regex="/^[\w\u4e00-\u9fa5-]+$/" regexTip="标签只允许输入中英文字符、数字、下划线和中划线"></BTagsPanel>
+    <BTagsPanel v-model:tags="tags" :regex="/^[\w\u4e00-\u9fa5-]+$/" regexTip="标签只允许输入中英文字符、数字、下划线和中划线"></BTagsPanel>
 </template>
 <script setup lang="ts">
 import { ref, watch } from 'vue';

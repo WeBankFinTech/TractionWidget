@@ -1,5 +1,5 @@
 <template>
-    <BTagsPanel v-model:tags="tags" :maxlength="8"></BTagsPanel>
+    <BTagsPanel v-model:tags="tags" :maxlength="8" :showWordLimit="true"></BTagsPanel>
 </template>
 <script setup lang="ts">
 import { ref, watch } from 'vue';
