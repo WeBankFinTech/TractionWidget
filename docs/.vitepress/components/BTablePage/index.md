@@ -27,9 +27,6 @@ app.use(BTablePage);
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------ | -------- |
 | layout | 布局类型 ，可选有'table'-表格页使用，'drawer'-抽屉页使用                                                                                                                                        | String                           | table     | 否      |                      |
 | isDivider | 是否有分割线                                                                                                                                         | Boolean                           | true     | 否      |                      |
-| loadingText | 加载文字对象| Object| `{loading: 'Loding. . .',emptyInitResult: '这里还没有数据. . .',emptyQueryResult: '没有符合条件的结果. . .'}`| 否      |                      |
-| actionType | 加载类型，可选有'loading' 、 'emptyInitResult' 、 'emptyQueryResult' | String| loading |否
-| isLoading | 表格是否加载                                                                                                                                         | Boolean                           | false     | 是      |                      |
 ### TablePage Slots
 | 名称          | 说明                                                                                                                                            | 参数                                |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
@@ -39,3 +36,4 @@ app.use(BTablePage);
 | pagination | 翻页页码                                                                                                                                          | -                        |
 ## 注意事项
 1. 案例中使用到的search组件的详细说明，请看BSearch组件页面
+2. 为满足加载loading时保留表格表头的显示，推荐将BPageLoading内置到slot-table中展示，BTablePage原有传参（loadingText、actionType、isLoading）不推荐使用，为兼容以往写法，参数仍保留。
