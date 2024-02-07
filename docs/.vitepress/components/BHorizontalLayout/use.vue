@@ -1,6 +1,6 @@
 <template>
     <div style="height: 500px">
-        <BHorizontalLayout v-model:curPath="currentPath" :menus="menus" @menuChange="onMenuClick" footText="自定义注脚">
+        <BHorizontalLayout v-model:curPath="currentPath" :menus="menus" @menuChange="onMenuClick" @sideBarCollapse="onSideBarCollapse" footText="自定义注脚">
             <template v-slot:top>
                     顶部内容
             </template>
@@ -80,4 +80,11 @@ const onMenuClick = (v: any) => {
     console.log('onMenuClick-菜单跳转', currentPath.value);
 };
 
+const onSideBarCollapse = (v:Boolean) => {
+    if (v) {
+        console.log('侧边栏折叠')
+    } else {
+        console.log('侧边栏展开')
+    }
+}
 </script>

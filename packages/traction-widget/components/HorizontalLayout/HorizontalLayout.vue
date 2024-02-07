@@ -61,7 +61,7 @@ const props = defineProps({
         default: 'WeDataSphere版权所有'
     }
 });
-const emit = defineEmits(['menuChange', 'update:curPath']);
+const emit = defineEmits(['sideBarCollapse','menuChange', 'update:curPath']);
 const curPath = computed({
     get () {
         return props.curPath;
@@ -80,6 +80,7 @@ const onMenuClick = (e: { value: string; }) => {
 const isSideBarCollapse = ref(false);
 const toggleSideBar = () => {
     isSideBarCollapse.value = !isSideBarCollapse.value;
+    emit('sideBarCollapse', isSideBarCollapse.value);
 };
 
 const expandedKeys = ref<string[] | null>([]);
