@@ -7,6 +7,6 @@
       "hoist": true
     }
   },
-  "npmClient": "wnpm",
+  "npmClient": "npm",
   "version": "1.1.6"
 }
