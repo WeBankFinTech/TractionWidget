@@ -105,7 +105,7 @@ function findParentPath (tree: MenuItem[], target: string): string[] | null {
         }
     }
 
-    return null;
+    return [];
 }
 watchEffect(() => {
     if (curPath.value) {
