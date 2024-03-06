@@ -4,7 +4,7 @@
         <div :class="[slot.header ? 'selector-with-header' : 'selector']">
             <div class="query-input">
                 <slot name="selectors"></slot>
-                <FSelect v-model="selectedList" class="hidden-select" filterable multiple :options="props.options" @change="handleChange"></FSelect>
+                <FSelect v-model="selectedList" class="hidden-select" filterable multiple :options="props.options" @change="handleChange" :getContainer="getContainer"></FSelect>
             </div>
             <div class="tag-label">
                 <span>已选：</span>
@@ -52,6 +52,11 @@ const props = defineProps({
         type: Boolean,
         require: false,
         default: false
+    },
+    getContainer: {
+        type: Function,
+        required: false,
+        default: () => document.body
     }
 });
 const emit = defineEmits(['update:selectedList', 'selectorChange', 'clearAll']);
