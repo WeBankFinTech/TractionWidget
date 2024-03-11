@@ -37,6 +37,20 @@ const menus = ref([{
         icon: () => h(ClusterOutlined),
     }]
 },{
+    label: '我的项目2',
+    value: '/rules2',
+    icon: () => h(SettingOutlined),
+    children: [{
+        label: '规则查询一个很长想看下省略效果的标题2',
+        value: '/rules2/query',
+        icon: () => h(DateOutlined),
+    }, {
+        label: '规则模板2',
+        value: '/rules2/template',
+        icon: () => h(ClusterOutlined),
+    }]
+},
+{
     label: '任务查询1',
     value: '/tasks1',
     icon: () => h(AppstoreOutlined),
