@@ -104,14 +104,13 @@ function findParentPath (tree: MenuItem[], target: string): string[] | null {
             }
         }
     }
-
-    return [];
+    return null;
 }
 watchEffect(() => {
     if (curPath.value) {
         console.log('当前路径', curPath.value, props.menus, findParentPath(props.menus, curPath.value));
         // 如/train/workflow，匹配到根路径，展开/train菜单
-        expandedKeys.value = findParentPath(props.menus, curPath.value);
+        expandedKeys.value = findParentPath(props.menus, curPath.value) || [];
     }
 });
 
