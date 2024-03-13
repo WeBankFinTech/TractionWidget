@@ -13,11 +13,21 @@ const STYLE_SOURCE = path.join(rootDir, './packages/traction-widget/components/_
 fse.mkdirsSync(OUTPUT_DIR);
 
 async function main () {
+    const tempFilePath = path.join(OUTPUT_DIR, 'temp.css');
+    await compilerCss(STYLE_SOURCE, tempFilePath);
+
+    let cssContent = fse.readFileSync(tempFilePath, 'utf-8');
+
+    // 替换路径
+    cssContent = cssContent.replace(/(\.\.\/\.\.\/assets\/)/g, './assets/');
+
+    fse.outputFileSync(tempFilePath, cssContent);
+
     const outputFilePath = path.join(OUTPUT_DIR, 'traction-widget.css');
-    await compilerCss(STYLE_SOURCE, outputFilePath);
-    const compressResult = csso.minify(
-        fse.readFileSync(outputFilePath, 'utf-8')
-    );
+    fse.moveSync(tempFilePath, outputFilePath, { overwrite: true });
+
+    const compressResult = csso.minify(cssContent);
+
     fse.outputFileSync(
         path.join(OUTPUT_DIR, 'traction-widget.min.css'),
         compressResult.css

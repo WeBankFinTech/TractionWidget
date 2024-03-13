@@ -75,6 +75,7 @@
     "lodash-es": "4.17.21",
     "prettier": "2.8.4",
     "rollup": "3.17.2",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-postcss": "4.0.2",
     "rollup-plugin-vue": "6.0.0",
     "shiki": "0.12.1",
