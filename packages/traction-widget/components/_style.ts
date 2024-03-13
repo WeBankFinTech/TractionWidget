@@ -7,3 +7,4 @@ import './TableHeaderConfig/style';
 import './TablePage/style';
 import './TagSelector/style';
 import './VerticalLayout/style';
+import './TagsPanel/style';
