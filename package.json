@@ -11,10 +11,11 @@
     "build:esm": "node scripts/build-esm.js",
     "build:umd": "node scripts/build-umd.js",
     "build:type": "node scripts/build-types.js",
-    "build.unix": "rm -rf packages/traction-widget/dist packages/traction-widget/es && npm run build:esm && npm run build:type && npm run build:umd",
+    "build:style": "node scripts/build-style.js",
+    "build.unix": "rm -rf packages/traction-widget/dist packages/traction-widget/es && npm run build:esm && npm run build:type && npm run build:style && npm run build:umd",
     "release": "npm run build && node scripts/release.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "build.win": "npm run build:esm && npm run build:type && npm run build:umd",
+    "build.win": "npm run build:esm && npm run build:type && npm run build:style && npm run build:umd",
     "build": "node scripts/build.js"
   },
   "files": [
