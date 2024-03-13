@@ -62,7 +62,7 @@ const getRollupConfig = (config = {}) => ({
             ]
         }),
         postcss({
-            extract: true
+            extract: false
         })
     ],
     ...config
