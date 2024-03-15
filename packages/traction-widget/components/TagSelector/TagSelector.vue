@@ -1,7 +1,9 @@
 <template>
     <div class="selector-wrapper">
-        <div v-if="slot.header" class="selector-header"><slot name="header"></slot></div>
-        <div :class="[slot.header ? 'selector-with-header' : 'selector']">
+        <div v-if="isSlotHeader" class="selector-header">
+            <slot name="header"></slot>
+        </div>
+        <div :class="[isSlotHeader ? 'selector-with-header' : 'selector']">
             <div class="query-input">
                 <slot name="selectors"></slot>
                 <FSelect v-model="selectedList" class="hidden-select" filterable multiple :options="props.options" @change="handleChange" :getContainer="getContainer"></FSelect>
@@ -73,7 +75,7 @@ const deleteTag = (item: any, index: number) => {
     emit('selectorChange', selectedList.value);
 };
 const cacheOptions = ref<any[]>([]);
-const slot = useSlots();
+const isSlotHeader = computed(() => !!useSlots().header);
 const handleChange = (val: any) => {
     cacheOptions.value.push(...props.options);
     cacheOptions.value = cacheOptions.value.filter((item, index, self) => {

@@ -1,7 +1,7 @@
 <template>
     <div class="wd-horizontal-layout">
         <div class="wd-side-menus" :class="{ collapse: isSideBarCollapse }">
-            <div v-if="isSlot" class="wd-logo">
+            <div v-if="isSlotTop" class="wd-logo">
                 <slot name="top"></slot>
             </div>
             <div class="wd-menus-list">
@@ -32,7 +32,7 @@ import { defineProps, defineEmits, ref, computed, useSlots, watchEffect } from '
 import { FMenu } from '@fesjs/fes-design';
 import { RightOutlined, LeftOutlined } from '@fesjs/fes-design/icon';
 
-const isSlot = !!useSlots().top;
+const isSlotTop = computed(() => !!useSlots().top);
 const props = defineProps({
     // 当前选择的菜单项
     curPath: {
@@ -61,7 +61,7 @@ const props = defineProps({
         default: 'WeDataSphere版权所有'
     }
 });
-const emit = defineEmits(['sideBarCollapse','menuChange', 'update:curPath']);
+const emit = defineEmits(['sideBarCollapse', 'menuChange', 'update:curPath']);
 const curPath = computed({
     get () {
         return props.curPath;
