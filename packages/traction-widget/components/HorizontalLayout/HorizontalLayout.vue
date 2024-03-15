@@ -61,7 +61,7 @@ const props = defineProps({
         default: 'WeDataSphere版权所有'
     }
 });
-const emit = defineEmits(['sideBarCollapse','menuChange', 'update:curPath']);
+const emit = defineEmits(['sideBarCollapse', 'menuChange', 'update:curPath']);
 const curPath = computed({
     get () {
         return props.curPath;
@@ -91,20 +91,35 @@ interface MenuItem {
     children?: MenuItem[];
 }
 
-function findParentPath (tree: MenuItem[], target: string): string[] | null {
-    for (const node of tree) {
-        if (node.value === target) {
-            return [node.value];
+function findParentPath (menus: MenuItem[], targetPath: string): string[] {
+    for (const menu of menus) {
+        if (menu.value === targetPath) {
+            return [menu.value]; // 找到目标路径，返回包含目标路径的数组
         }
 
-        if (node.children && node.children.length > 0) {
-            const childPath = findParentPath(node.children, target);
-            if (childPath !== null) {
-                return [node.value, ...childPath];
+        if (menu.children) {
+            const parentPath = findParentPath(menu.children, targetPath);
+            if (parentPath.length > 0) {
+                return [menu.value, ...parentPath]; // 找到目标路径的父路径，返回包含父路径和目标路径的数组
             }
         }
     }
-    return null;
+
+    // 没有找到匹配的路径，尝试匹配父路径
+    for (const menu of menus) {
+        if (targetPath.startsWith(menu.value)) {
+            const parentPath = findParentPath(menu.children || [], targetPath);
+            if (parentPath.length > 0) {
+                return [menu.value, ...parentPath]; // 找到目标路径的父路径，返回包含父路径和目标路径的数组
+            } else {
+                if (menu.value !== targetPath) {
+                    return [menu.value]; // 没有找到目标路径的父路径，返回当前路径
+                }
+            }
+        }
+    }
+
+    return []; // 没有找到匹配的路径，返回空数组
 }
 watchEffect(() => {
     if (curPath.value) {
