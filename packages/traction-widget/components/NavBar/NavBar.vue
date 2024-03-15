@@ -1,7 +1,7 @@
 <template>
     <div :class="layout === 'drawer' ? 'wd-nav-bar-drawer-parent' : ''">
         <div class="wd-nav-bar-page">
-            <FScrollbar style="width: 100%;">
+            <FScrollbar class="wd-nav-bar-scroll">
                  <FMenu
                     mode="horizontal"
                     :modelValue="curPath"
