@@ -2,7 +2,7 @@
     <div :class="layout === 'drawer' ? 'wd-table-drawer' : 'wd-table-page'">
         <slot name="search"></slot>
         <FDivider v-if="isDivider" style="margin-top: 0px"></FDivider>
-        <div v-if="slotTest" class="operate">
+        <div v-if="isSlotOperate" class="operate">
             <FSpace :size="16">
                 <slot name="operate"></slot>
             </FSpace>
@@ -20,11 +20,11 @@
 </template>
 <script setup lang="ts">
 
-import { defineProps, PropType, useSlots } from 'vue';
+import { defineProps, PropType, useSlots, computed } from 'vue';
 import PageLoading from '../PageLoading/pageLoading.vue';
 import { FSpace, FDivider } from '@fesjs/fes-design';
 
-const slotTest = !!useSlots().operate;
+const isSlotOperate = computed(() => !!useSlots().operate);
 const props = defineProps({
     // 表格是否加载
     isLoading: {
