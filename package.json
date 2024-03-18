@@ -1,6 +1,6 @@
 {
   "name": "@fesjs/traction-widget",
-  "version": "1.8.7",
+  "version": "1.8.9",
   "description": "集合大型中台项目使用到的通用组件和工具函数",
   "scripts": {
     "docs:dev": "npm run build && vitepress dev docs",
@@ -11,10 +11,11 @@
     "build:esm": "node scripts/build-esm.js",
     "build:umd": "node scripts/build-umd.js",
     "build:type": "node scripts/build-types.js",
-    "build.unix": "rm -rf packages/traction-widget/dist packages/traction-widget/es && npm run build:esm && npm run build:type && npm run build:umd",
+    "build:style": "node scripts/build-style.js",
+    "build.unix": "rm -rf packages/traction-widget/dist packages/traction-widget/es && npm run build:esm && npm run build:type && npm run build:style && npm run build:umd",
     "release": "npm run build && node scripts/release.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "build.win": "npm run build:esm && npm run build:type && npm run build:umd",
+    "build.win": "npm run build:esm && npm run build:type && npm run build:style && npm run build:umd",
     "build": "node scripts/build.js"
   },
   "files": [
@@ -74,6 +75,7 @@
     "lodash-es": "4.17.21",
     "prettier": "2.8.4",
     "rollup": "3.17.2",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-postcss": "4.0.2",
     "rollup-plugin-vue": "6.0.0",
     "shiki": "0.12.1",

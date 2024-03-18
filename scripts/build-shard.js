@@ -5,12 +5,12 @@ const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const vuePlugin = require('rollup-plugin-vue');
 const commonjs = require('@rollup/plugin-commonjs');
 const babel = require('@rollup/plugin-babel');
-
+const copy = require('rollup-plugin-copy');
 const postcss = require('rollup-plugin-postcss');
 
 const SOURCE_PATH = path.join(__dirname, '../packages/traction-widget/components/index.ts');
 const OUTPUT_DIR = path.join(__dirname, '../packages/traction-widget/dist');
-
+const ASSEETS_DIR = path.join(__dirname, '../packages/traction-widget/components/assets');
 const extensions = ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'];
 
 const getRollupConfig = (config = {}) => ({
@@ -62,7 +62,13 @@ const getRollupConfig = (config = {}) => ({
             ]
         }),
         postcss({
-            extract: true
+            extract: false
+        }),
+        // asserts目录拷贝到产物
+        copy({
+            targets: [
+                { src: ASSEETS_DIR, dest: OUTPUT_DIR }
+            ]
         })
     ],
     ...config
