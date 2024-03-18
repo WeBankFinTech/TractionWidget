@@ -1,12 +1,21 @@
 <template>
     <div :class="prefixCls" class="wd-search">
-        <div class="condition-item">
-            <FSpace :size="22">
+        <div :class="{
+                'condition-item': true,
+                'flex-condition-item': props.isLetgo,
+                'gap-22': props.isLetgo
+            }">
+            <FSpace :size="22" v-if="!props.isLetgo">
                 <slot name="form"></slot>
             </FSpace>
+            <slot name="form" v-else></slot>
         </div>
-        <div class="condition-item">
-            <FSpace :size="16">
+        <div :class="{
+                'condition-item': true,
+                'flex-condition-item': props.isLetgo,
+                'gap-16': props.isLetgo
+            }">
+            <FSpace :size="16" v-if="!props.isLetgo">
                 <FButton type="primary" @click="handleSearch">查询</FButton>
                 <template v-if="props.isAdvance">
                     <FButton v-if="isAdvanceCount" @click="handleAdvance"
@@ -20,6 +29,20 @@
                 <FButton v-if="props.isReset" @click="handleReset">重置</FButton>
                 <slot name="exButton"></slot>
             </FSpace>
+            <template v-else>
+                <FButton type="primary" @click="handleSearch">查询</FButton>
+                <template v-if="props.isAdvance">
+                    <FButton v-if="isAdvanceCount" @click="handleAdvance"
+                            :class="querySelectedCount > 0 ? 'selected-count' : ''">
+                            高级筛选{{querySelectedCount > 0 ? `（已选${querySelectedCount}项）` : ''}}
+                    </FButton>
+                    <FButton v-else @click="handleAdvance">
+                        高级筛选
+                    </FButton>
+                </template>
+                <FButton v-if="props.isReset" @click="handleReset">重置</FButton>
+                <slot name="exButton"></slot>
+            </template>
         </div>
     </div>
 </template>
@@ -60,6 +83,12 @@ const props = defineProps({
         type: Boolean,
         require: false,
         default: true
+    },
+    // 是否为letgo开发。letgo不支持FSpace嵌入slot
+    isLetgo: {
+        type: Boolean,
+        require: false,
+        default: false
     }
 });
 const emit = defineEmits(['search', 'reset', 'advance', 'update:form', 'update:advanceForm']);
