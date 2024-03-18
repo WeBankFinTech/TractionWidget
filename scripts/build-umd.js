@@ -6,6 +6,7 @@ const replace = require('@rollup/plugin-replace');
 const { minify } = require('terser');
 
 const { getRollupConfig, OUTPUT_DIR } = require('./build-shard');
+const SOURCE = path.join(__dirname, '../packages/traction-widget/components');
 
 fse.mkdirsSync(OUTPUT_DIR);
 
@@ -36,6 +37,7 @@ async function compiler () {
         path.join(OUTPUT_DIR, 'traction-widget.min.js'),
         compressResult.code
     );
+    fse.copySync(path.join(SOURCE, 'assets'), path.join(OUTPUT_DIR, 'assets'), { overwrite: true });
 }
 
 compiler();
