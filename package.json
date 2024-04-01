@@ -9,13 +9,14 @@
     "prepare": "husky install",
     "commit": "git-cz",
     "build:esm": "node scripts/build-esm.js",
+    "build:esm-browser": "node scripts/build-browser.mjs",
     "build:umd": "node scripts/build-umd.js",
     "build:type": "node scripts/build-types.js",
     "build:style": "node scripts/build-style.js",
-    "build.unix": "rm -rf packages/traction-widget/dist packages/traction-widget/es && npm run build:esm && npm run build:type && npm run build:style && npm run build:umd",
+    "build.unix": "rm -rf packages/traction-widget/dist packages/traction-widget/es && npm run build:esm && npm run build:type && npm run build:style && npm run build:umd && npm run build:esm-browser",
     "release": "npm run build && node scripts/release.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "build.win": "npm run build:esm && npm run build:type && npm run build:style && npm run build:umd",
+    "build.win": "npm run build:esm && npm run build:type && npm run build:style && npm run build:umd && npm run build:esm-browser",
     "build": "node scripts/build.js"
   },
   "files": [
