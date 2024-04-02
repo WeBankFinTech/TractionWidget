@@ -1,20 +1,26 @@
-import { createVNode, render } from 'vue'
-import ExampleRepl from './exampleRepl.vue'
+import { createVNode, defineAsyncComponent, render } from 'vue';
 
-let vm
-export default function playground (codeName) {
-  console.log('codeName', codeName)
-  if (vm) {
-    vm.component.exposed.handleShow(true)
-    vm.component.props.codeName = codeName
-    return vm
-  }
-  const container = document.createElement('div')
-  vm = createVNode(ExampleRepl, {
-    codeName
-  })
-  render(vm, container)
+const AsyncExampleRepl = defineAsyncComponent({
+    loader: () => import('./exampleRepl.vue'),
+});
 
-  document.body.appendChild(container)
-  return vm
+let vm;
+export default function playground({ codeName, codeSrc }) {
+    if (vm) {
+        const exampleReplComponent = vm.component.subTree.component;
+        exampleReplComponent.props.codeName = codeName;
+        exampleReplComponent.props.codeSrc = codeSrc;
+        exampleReplComponent.exposed.handleShow(true);
+        return vm;
+    }
+    const container = document.createElement('div');
+    vm = createVNode(AsyncExampleRepl, {
+        codeName,
+        codeSrc,
+    });
+
+    render(vm, container);
+
+    document.body.appendChild(container);
+    return vm;
 }
