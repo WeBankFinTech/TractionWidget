@@ -1,8 +1,8 @@
-const path = require('path');
-const fs = require('fs');
-const fse = require('fs-extra');
-const shiki = require('shiki');
-const cheapWatch = require('cheap-watch');
+import path from 'path';
+import fs from 'fs';
+import fse from 'fs-extra';
+import shiki from 'shiki';
+import cheapWatch from 'cheap-watch';
 
 const SCRIPT_TEMPLATE = `
 <script>
@@ -54,11 +54,15 @@ function genOutputPath (name) {
     return path.join(process.cwd(), `./docs/components/${name}.md`);
 }
 
-function handleCompDoc (compCode, compName, demoName) {
+function handleCompDoc(compCode, compName, demoName) {
+    const codeName = `${compName}.${demoName}`;
+    const codeSrc = encodeURIComponent(code[`${codeName}`]);
+    const codeFormat = encodeURIComponent(code[`${codeName}-code`]);
+
     return compCode.replace(
         /<template>([\s\S]*)<\/template>/,
         (match, p1) =>
-            `<template><ComponentDoc code="${compName}.${demoName}"><ClientOnly>${p1}</ClientOnly></ComponentDoc></template>`
+            `<template><ComponentDoc codeName="${codeName}" codeSrc="${codeSrc}" codeFormat="${codeFormat}"><ClientOnly>${p1}</ClientOnly></ComponentDoc></template>`,
     );
 }
 
@@ -236,7 +240,7 @@ async function watch (src) {
     watcher.on('-', handleDelete);
 }
 
-exports.genComponentDoc = async (useWatch = true) => {
+export const genComponentDoc = async (useWatch = true) => {
     const src = path.join(process.cwd(), './docs/.vitepress/components');
     await genComponents(src);
 
