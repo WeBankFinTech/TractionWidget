@@ -45,6 +45,10 @@ const fesDesignSetup = `
             link.rel = 'stylesheet'
             link.href = 'https://npm.elemecdn.com/@fesjs/fes-design@latest/dist/fes-design.min.css';
             document.head.appendChild(link)
+            const twcsslink = document.createElement('link')
+            twcsslink.rel = 'stylesheet'
+            twcsslink.href = 'https://cdn.jsdelivr.net/npm/@fesjs/traction-widget/dist/traction-widget.min.css';
+            document.head.appendChild(twcsslink)
         }
         
         export function setupFesDesign() {
@@ -59,6 +63,7 @@ const fesDesignSetup = `
         `;
 
 function resolveSFCExample (demo) {
+    
     const files = {
         [mainFile]: data.app,
         'space.vue': data.space,
@@ -67,7 +72,8 @@ function resolveSFCExample (demo) {
         'import-map.json': JSON.stringify({
             imports: {
                 '@fesjs/fes-design': 'https://npm.elemecdn.com/@fesjs/fes-design@latest/dist/fes-design.esm-browser.js',
-                '@fesjs/fes-design/icon': 'https://npm.elemecdn.com/@fesjs/fes-design@latest/dist/fes-design.icon-browser.js'
+                '@fesjs/fes-design/icon': 'https://npm.elemecdn.com/@fesjs/fes-design@latest/dist/fes-design.icon-browser.js',
+                '@fesjs/traction-widget': 'https://cdn.jsdelivr.net/npm/@fesjs/traction-widget/dist/traction-widget.esm-browser.js'
             }
         })
     };
@@ -90,7 +96,7 @@ defineExpose({
     handleShow
 });
 
-watch(props.codeName, () => {
+watch(() => props.codeName, () => {
     updateExample(props.codeName);
 }, {
     immediate: true

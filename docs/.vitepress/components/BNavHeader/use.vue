@@ -16,7 +16,7 @@ const handleBack = () => {
     FMessage.info('自定义返回逻辑');
 };
 </script>
-<style lang='less' scoped>
+<style scoped>
 .eg-page {
     padding: 24px;
     background: #fff;

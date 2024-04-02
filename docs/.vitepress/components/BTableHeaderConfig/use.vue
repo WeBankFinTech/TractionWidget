@@ -6,7 +6,7 @@
             <FTableColumn prop="title" label="标题" :visible="checkTColShow('title')"></FTableColumn>
             <FTableColumn prop="content" label="内容" :visible="checkTColShow('content')"></FTableColumn>
             <FTableColumn prop="action" label="操作" v-slot="{ row }" :visible="checkTColShow('action')">
-                <a href="javascript:;" @click="viewContent(row)">查看</a>
+                <a class="action-btn" href="javascript:;" @click="viewContent(row)">查看</a>
             </FTableColumn>
         </FTable>
     </div>
@@ -40,3 +40,11 @@ const viewContent = (row: {
     });
 };
 </script>
+<style>
+.action-btn {
+    font-weight: 500;
+    color: #10b981;
+    text-decoration: none;
+    transition: color 0.25s;
+}
+</style>

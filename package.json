@@ -3,7 +3,7 @@
   "version": "1.8.11",
   "description": "集合大型中台项目使用到的通用组件和工具函数",
   "scripts": {
-    "docs:dev": "npm run build && vitepress dev docs",
+    "docs:dev": "npm run build && node scripts/generate-doc.js && vitepress dev docs",
     "docs:build": "npm run build && node scripts/generate-doc.js && vitepress build docs",
     "docsBuild": "npm run build && node scripts/generate-doc.js && vitepress build docs",
     "prepare": "husky install",

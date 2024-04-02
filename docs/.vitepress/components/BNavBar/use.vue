@@ -44,7 +44,7 @@ const openDrawer = () => {
     showDrawer.value = true;
 };
 </script>
-<style lang='less' scoped>
+<style scoped>
 .eg-page {
     display: grid;
     padding: 16px 24px;

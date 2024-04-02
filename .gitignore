@@ -4,6 +4,7 @@ node_modules
 .DS_Store
 packages/traction-widget/node_modules
 packages/traction-widget/es
+types
 es
 packages/traction-widget/dist
 dist
