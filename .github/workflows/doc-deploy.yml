@@ -33,7 +33,7 @@ jobs:
       uses: easingthemes/ssh-deploy@main
       env:
         # 本地.ssh文件下的私钥id_rsa，存在secrets的TOKEN中
-        SSH_PRIVATE_KEY: ${{ secrets.LUCAS_PRIVATE_KEY }} 
+        SSH_PRIVATE_KEY: ${{ secrets.JOY_PRIVATE_KEY }} 
         # 复制操作的参数。"-avzr --delete"意味部署时清空服务器目标目录下的文件
         # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
         SOURCE: docs/.vitepress/dist/
