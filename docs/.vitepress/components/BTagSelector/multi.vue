@@ -61,7 +61,7 @@ const handleChange = (val: any) => {
     console.log(val);
 };
 </script>
-<style scoped lang="less">
+<style scoped>
 .title-text {
     font-family: PingFangSC-Medium;
     font-size: 14px;

@@ -20,7 +20,7 @@ const handleClear = ()=>{
     console.log('clear all')
 }
 </script>
-<style scoped lang="less">
+<style scoped>
 .title-text {
     font-family: PingFangSC-Medium;
     font-size: 14px;

@@ -1,11 +1,12 @@
 <template>
   <div class="component-doc">
+
+    <span class="play" @click="openPlayground">Play</span>
     <div class="component-doc-content">
       <slot></slot>
     </div>
     <div :class="['component-doc-code', visibleCode && 'visible-code']" v-html="code"></div>
     <div class="component-doc-header" @click="toggleCode">
-      <!-- span class="play" @click="openPlayground">play</span-->
       <!-- <LeftOutlined :class="['show-code-btn', visibleCode && 'active']" @click="toggleCode" /> -->
       {{visibleCode ? '收起代码' : '查看代码'}}
       <DownOutlined :class="['show-code-btn', visibleCode && 'active']" />
@@ -20,7 +21,7 @@ import {
 } from 'vue';
 import { DownOutlined } from '@fesjs/fes-design/icon';
 
-// import playground from './playground';
+import playground from './playground';
 import codes from './demoCode.json';
 
 const props = defineProps({
@@ -38,20 +39,32 @@ watch(
 );
 
 const visibleCode = ref(false);
-// const openPlayground = () => {
-//     playground(props.code);
-// };
+const openPlayground = () => {
+    playground(props.code);
+};
 
 const toggleCode = () => {
     visibleCode.value = !visibleCode.value;
 };
 </script>
 <style lang="less" scoped>
+.play {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  cursor: pointer;
+  &:hover {
+    color: #108981;
+  }
+}
 .component-doc {
   margin-top: 16px;
   border: 1px solid #cfd0d3;
   border-radius: 4px;
-
+  position: relative;
+  .component-doc-content {
+    padding-top: 48px;
+  }
   &-header {
     height: 48px;
     display: flex;
@@ -71,11 +84,6 @@ const toggleCode = () => {
       &.active {
         transform: rotateZ(-180deg);
       }
-    }
-
-    .play {
-      margin-right: 20px;
-      cursor: pointer;
     }
   }
 
