@@ -72,6 +72,12 @@ const props = defineProps({
         require: false,
         default: true
     },
+    // 是否自定义高级筛选统计数量函数
+    advanceCountFunc: {
+        type: Function,
+        require: false,
+        default: () => {}
+    },
     // 高级筛选表单，仅用于统计填写数量
     advanceForm: {
         type: Object,
@@ -80,6 +86,12 @@ const props = defineProps({
     },
     // 是否有重置
     isReset: {
+        type: Boolean,
+        require: false,
+        default: true
+    },
+    // 点击重置后是否做清空,默认会做清空，但有时会重置为默认值，所以提供跳过清空逻辑
+    isResetAllClear: {
         type: Boolean,
         require: false,
         default: true
@@ -98,12 +110,16 @@ const prefixCls = getPrefixCls('search');
 
 // 筛选条件数量的watch
 const querySelectedCount = computed(() => {
-    return Object.values(props.advanceForm).filter((item) => {
-        if (item === 0) return true;
-        if (isBoolean(item)) return true;
-        if (Array.isArray(item) && item.length === 0) return false;
-        return !!item;
-    }).length;
+    if (props.advanceCountFunc.toString().trim() === '() => {}') {
+        return Object.values(props.advanceForm).filter((item) => {
+            if (item === 0) return true;
+            if (isBoolean(item)) return true;
+            if (Array.isArray(item) && item.length === 0) return false;
+            return !!item;
+        }).length;
+    } else {
+        return props.advanceCountFunc(props.advanceForm);
+    }
 });
 
 const handleSearch = () => {
@@ -124,9 +140,11 @@ const resetForm = (form) => {
 };
 
 const handleReset = () => {
-    resetForm(datasource.form);
-    if (datasource.advanceForm) {
-        resetForm(datasource.advanceForm);
+    if (props.isResetAllClear) {
+        resetForm(datasource.form);
+        if (datasource.advanceForm) {
+            resetForm(datasource.advanceForm);
+        }
     }
     emit('reset');
 };
