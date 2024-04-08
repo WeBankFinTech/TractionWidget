@@ -77,7 +77,12 @@ export default defineConfig({
         {
             text: '函数',
             link: '/utils/isIE'
-        }],
+        },
+        {
+            text: 'Easy Code',
+            link: 'https://mumblefe.cn/p/easycode/#/chat'
+        }
+    ],
         sidebar: {
             '/components/': [
                 {
