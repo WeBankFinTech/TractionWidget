@@ -2,7 +2,7 @@ import { BTagsPanel } from './TagsPanel';
 import { BTableHeaderConfig } from './TableHeaderConfig';
 import { BPageLoading } from './PageLoading';
 import { BTagSelector } from './TagSelector';
-import { getUrlParams, formatterEmptyValue, isIE, validate, dynamicFormOperate } from './utils';
+import { getUrlParams, formatterEmptyValue, isIE, validate, dynamicFormOperate, format } from './utils';
 import { BHorizontalLayout } from './HorizontalLayout';
 import { BVerticalLayout } from './VerticalLayout';
 import { BSearch } from './Search';
@@ -35,6 +35,7 @@ export {
     getUrlParams,
     formatterEmptyValue,
     validate,
+    format,
     dynamicFormOperate,
     BTagsPanel,
     BTableHeaderConfig,
@@ -54,6 +55,7 @@ export default {
     getUrlParams,
     formatterEmptyValue,
     validate,
+    format,
     dynamicFormOperate,
     BTagsPanel,
     BTableHeaderConfig,
