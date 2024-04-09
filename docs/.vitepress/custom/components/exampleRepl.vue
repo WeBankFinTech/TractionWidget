@@ -42,8 +42,12 @@ const defaultFiles = {
                 'https://registry.npmmirror.com/@fesjs/fes-design/latest/files/dist/fes-design.esm-browser.js',
             '@fesjs/fes-design/icon':
                 'https://registry.npmmirror.com/@fesjs/fes-design/latest/files/dist/fes-design.icon-browser.js',
+            // 切npm库
             '@fesjs/traction-widget':
-                'https://cdn.jsdelivr.net/npm/@fesjs/traction-widget/dist/traction-widget.esm-browser.js'
+                'https://cdn.jsdelivr.net/npm/@fesjs/traction-widget/dist/traction-widget.esm-browser.js',
+            // 切本地库
+            // '@fesjs/traction-widget':
+            //     'http://127.0.0.1:8080/packages/traction-widget/dist/traction-widget.esm-browser.js'
         },
     }),
 };

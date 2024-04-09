@@ -27,7 +27,10 @@ app.use(BSearch);
 | advanceForm | 高级筛选表单数据                                                                                                                                          | Object                           | {}     | 否       |
 | isAdvance | 是否展示高级筛选按钮                                                                                                                                          | Boolean                           | false     | 否       |
 | isAdvanceCount | 是否统计高级筛选已填数量                                                                                                                                          | Boolean                           | true     | 否       |
+| advanceCountFunc | 自定义高级筛选计数函数                                                                                                                                          | Function                           | (advanceForm) => {}     | 否       |
 | isReset | 是否展示重置按钮                                                                                                                                          | Boolean                           | true     | 否       |
+| isResetAllClear |  点击重置后是否做自动清空                                                                                                                                          | Boolean                           | true     | 否       |
+| isLetgo |   是否为letgo开发                                                                                                                                          | Boolean                           | false     | 否       |
 
 ### Search Events
  事件名称          | 说明                                                                                                                                            | 回调参数                                |

@@ -77,7 +77,12 @@ export default defineConfig({
         {
             text: '函数',
             link: '/utils/isIE'
-        }],
+        },
+        {
+            text: 'Easy Code',
+            link: 'https://mumblefe.cn/p/easycode/#/chat'
+        }
+    ],
         sidebar: {
             '/components/': [
                 {
@@ -109,7 +114,8 @@ export default defineConfig({
                     { text: 'getUrlParams', link: '/utils/getUrlParams' },
                     { text: 'forceDownload', link: '/utils/forceDownload' },
                     { text: 'formatterEmptyValue', link: '/utils/formatterEmptyValue' },
-                    { text: 'validate', link: '/utils/validate'}
+                    { text: 'validate', link: '/utils/validate'},
+                    { text: 'format', link: '/utils/format'}
                 ]
             }]
         }
