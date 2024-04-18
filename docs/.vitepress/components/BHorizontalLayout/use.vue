@@ -29,11 +29,38 @@ const menus = ref([{
     icon: () => h(SettingOutlined),
     children: [{
         label: '规则查询一个很长想看下省略效果的标题',
-        value: '/rules/query',
+        value: '/rules/query1',
         icon: () => h(DateOutlined),
+        children: [{
+            label: '规则查询一个很长想看下省略效果的标题',
+            value: '/rules/query2',
+            icon: () => h(DateOutlined),
+        }, {
+            label: '规则模板',
+            value: '/rules/template3',
+            icon: () => h(ClusterOutlined),
+            children: [{
+                label: '规则查询一个很长想看下省略效果的标题',
+                value: '/rules/query4',
+                icon: () => h(DateOutlined),
+                children: [{
+                    label: '规则查询一个很长想看下省略效果的标题',
+                    value: '/rules/query5',
+                    icon: () => h(DateOutlined),
+                }, {
+                    label: '规则模板',
+                    value: '/rules/template6',
+                    icon: () => h(ClusterOutlined),
+                }]
+            }, {
+                label: '规则模板',
+                value: '/rules/template7',
+                icon: () => h(ClusterOutlined),
+            }]
+        }]
     }, {
         label: '规则模板',
-        value: '/rules/template',
+        value: '/rules/template8',
         icon: () => h(ClusterOutlined),
     }]
 },{
