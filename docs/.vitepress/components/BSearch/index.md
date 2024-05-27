@@ -17,6 +17,12 @@ app.use(BSearch);
 
 --CODE
 
+### 自定义模式
+自定义高级筛选计数函数，自定义重置函数默认值。
+- 使用isCustomAdvanceCount声明自定义高级筛选的计数后，必须传参advanceCountFunc传自定义计数函数，否则计数失效。
+
+--USECOUSTOMADVANCERESET
+
 ## 参数说明
 
 ### Search Props
@@ -27,6 +33,7 @@ app.use(BSearch);
 | advanceForm | 高级筛选表单数据                                                                                                                                          | Object                           | {}     | 否       |
 | isAdvance | 是否展示高级筛选按钮                                                                                                                                          | Boolean                           | false     | 否       |
 | isAdvanceCount | 是否统计高级筛选已填数量                                                                                                                                          | Boolean                           | true     | 否       |
+| isCustomAdvanceCount |是否自定义高级筛选统计数量方法                                                                                                                                          | Boolean                           | false     | 否       |
 | advanceCountFunc | 自定义高级筛选计数函数                                                                                                                                          | Function                           | (advanceForm) => {}     | 否       |
 | isReset | 是否展示重置按钮                                                                                                                                          | Boolean                           | true     | 否       |
 | isResetAllClear |  点击重置后是否做自动清空                                                                                                                                          | Boolean                           | true     | 否       |

@@ -51,10 +51,28 @@ const menus = ref([
         label: '规则模板3',
         value: '/rules/template3',
         icon: () => h(ClusterOutlined),
+        children: [{
+            label: '规则查询一个很长想看下省略效果的标题2',
+            value: '/rules/template3/query',
+            icon: () => h(DateOutlined),
+        }, {
+            label: '规则模板2',
+            value: '/rules/template3/template',
+            icon: () => h(ClusterOutlined),
+        }]
     },{
     label: '任务查询1',
     value: '/tasks',
     icon: () => h(AppstoreOutlined),
+    children: [{
+            label: '规则查询一个很长想看下省略效果的标题2',
+            value: '/tasks/query',
+            icon: () => h(DateOutlined),
+        }, {
+            label: '规则模板2',
+            value: '/tasks/template',
+            icon: () => h(ClusterOutlined),
+        }]
 }])
 const search = () => {
     console.log('查询');
