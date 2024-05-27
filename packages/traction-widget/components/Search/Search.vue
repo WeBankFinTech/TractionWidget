@@ -72,7 +72,13 @@ const props = defineProps({
         require: false,
         default: true
     },
-    // 是否自定义高级筛选统计数量函数
+    // 是否自定义高级筛选统计数量方法
+    isCustomAdvanceCount: {
+        type: Boolean,
+        require: false,
+        default: false
+    },
+    // 自定义的高级筛选函数
     advanceCountFunc: {
         type: Function,
         require: false,
@@ -110,7 +116,7 @@ const prefixCls = getPrefixCls('search');
 
 // 筛选条件数量的watch
 const querySelectedCount = computed(() => {
-    if (props.advanceCountFunc.toString().trim() === '() => {}') {
+    if (!props.isCustomAdvanceCount) {
         return Object.values(props.advanceForm).filter((item) => {
             if (item === 0) return true;
             if (isBoolean(item)) return true;

@@ -1,6 +1,6 @@
 {
   "name": "@fesjs/traction-widget",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "集合大型中台项目使用到的通用组件和工具函数",
   "scripts": {
     "docs:dev": "npm run build && node docs/.vitepress/scripts/generate-doc.js && vitepress dev docs",
@@ -43,7 +43,7 @@
     "@babel/preset-typescript": "7.18.6",
     "@betit/rollup-plugin-rename-extensions": "0.1.0",
     "@commitlint/config-conventional": "17.2.0",
-    "@fesjs/fes-design": "0.8.43",
+    "@fesjs/fes-design": "0.8.50",
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-commonjs": "24.0.0",
     "@rollup/plugin-json": "6.0.0",

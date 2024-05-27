@@ -1,5 +1,6 @@
 <template>
-    <BSearch v-model:form="searchForm" v-model:advanceForm="advanceSearchForm" :isAdvance='true'
+    <BSearch v-model:form="searchForm" v-model:advanceForm="advanceSearchForm" :isResetAllClear="false"
+                :isAdvance='true' :isCustomAdvanceCount='true'  :advanceCountFunc="handleCustomAdvanceCount"
                 @search="handleSearch" @reset="handleReset" @advance="toggleAdvanceQuery">
         <template v-slot:form>
             <div>
@@ -7,21 +8,6 @@
                 <FInput v-model="searchForm.name" placeholder="请输入">
                 </FInput>
             </div>
-            <div>
-                <span class="condition-label">年龄</span>
-                <FInput v-model="searchForm.age" placeholder="请输入">
-                </FInput>
-            </div>
-            <div>
-                <span class="condition-label">性别</span>
-                <FSelect v-model="searchForm.gender" :options="genderList"
-                        placeholder="请选择" clearable filterable>
-                </FSelect>
-            </div>
-        </template>
-        <template v-slot:exButton>
-            <FButton @click="handleEX">额外按钮1</FButton>
-            <FButton @click="handleEX">额外按钮2</FButton>
         </template>
     </BSearch>
     <FModal :maskClosable="false" title="高级筛选" :show="showAdvanceQuery" @cancel="advanceCancel" @ok="advanceCancel">
@@ -47,27 +33,33 @@
 import { ref } from 'vue';
 import { BSearch } from '@fesjs/traction-widget';
 import { FSelect, FInput, FButton, FModal, FForm, FFormItem, FDatePicker, FRadioGroup, FRadio } from '@fesjs/fes-design';
+import { isBoolean } from 'lodash-es';
 
 const searchForm = ref({
     name: '',
-    age: '',
-    gender: '',
 })
-const advanceSearchForm = ref({
+const initAdvanceSearchForm = () => ({
     mobile: '',
     hobby: [],
     faith: null,
 })
-const genderList = [
-    {
-        label: '女',
-        value: 'woman'
-    },
-    {
-        label: '男',
-        value: 'man'
-    }
-]
+
+const advanceSearchForm = ref(initAdvanceSearchForm())
+
+const handleCustomAdvanceCount = (advanceFormData:any) => {
+    return Object.values(advanceFormData).filter((item) => {
+        if (item === 0) return true;
+        if (Array.isArray(item) && item.length === 0) return false;
+        return !!item;
+    }).length;
+};
+const handleReset = () => {
+    searchForm.value.name = '姓名默认值'
+    advanceSearchForm.value = initAdvanceSearchForm()
+    console.log('自行编写清除逻辑');
+    
+}
+
 const hobbyList = [
     {
         label: '篮球',
@@ -93,11 +85,8 @@ const toggleAdvanceQuery = () => {
 const advanceCancel = () => {
     showAdvanceQuery.value = false;
 }
-const handleReset = () => {
-    console.log('内置了顶部搜索和高级筛选的清空');
-    
-}
 const handleEX = () => {
     console.log('handleEX');
 };
+
 </script>
