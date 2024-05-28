@@ -1,6 +1,6 @@
 {
   "name": "@fesjs/traction-widget",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "集合大型中台项目使用到的通用组件和工具函数",
   "main": "dist/traction-widget.min.js",
   "module": "es/components/index.js",
@@ -27,7 +27,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@fesjs/fes-design": "0.8.7"
+    "@fesjs/fes-design": "0.8.50"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,vue,fes,wxa}": "eslint --fix"
