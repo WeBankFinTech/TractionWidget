@@ -81,7 +81,7 @@ const handleChange = (val: any) => {
     cacheOptions.value = cacheOptions.value.filter((item, index, self) => {
         return self.findIndex(el => el.value === item.value) === index;
     });
-    cacheOptions.value = cacheOptions.value.filter(item => selectedList.value.includes(item.value));
+    cacheOptions.value = cacheOptions.value.filter(item => val.includes(item.value));
     emit('selectorChange', val);
 };
 
