@@ -9,7 +9,7 @@ import { BSearch } from './Search';
 import { BTablePage } from './TablePage';
 import { BNavBar } from './NavBar';
 import { BNavHeader } from './NavHeader';
-import { BColumnTip } from './ColumnTip';
+import { BMetricTip } from './MetricTip';
 
 const components = [
     BTagsPanel,
@@ -21,7 +21,7 @@ const components = [
     BTablePage,
     BNavBar,
     BNavHeader,
-    BColumnTip
+    BMetricTip
 ];
 
 const install = (app: any): any => {
@@ -49,7 +49,7 @@ export {
     BTablePage,
     BNavBar,
     BNavHeader,
-    BColumnTip
+    BMetricTip
 };
 
 export default {
@@ -70,5 +70,5 @@ export default {
     BTablePage,
     BNavBar,
     BNavHeader,
-    BColumnTip
+    BMetricTip
 };

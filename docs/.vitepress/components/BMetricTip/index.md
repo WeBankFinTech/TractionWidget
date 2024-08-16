@@ -4,8 +4,8 @@
 ## 组件注册
 
 ```js
-import { BColumnTip } from '@fesjs/traction-widget';
-app.use(BColumnTip);
+import { BMetricTip } from '@fesjs/traction-widget';
+app.use(BMetricTip);
 ```
 ## 代码演示
 ### 基础用法
