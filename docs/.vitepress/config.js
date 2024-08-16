@@ -93,6 +93,7 @@ export default defineConfig({
                         { text: 'BTableHeaderConfig', link: '/components/BTableHeaderConfig' },
                         { text: 'BSearch', link: '/components/BSearch' },
                         { text: 'BDynamicForms', link: '/components/BDynamicForms'},
+                        { text: 'BColumnTip', link: '/components/BColumnTip'},
                     ]
                 },
                 {

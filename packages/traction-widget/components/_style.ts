@@ -8,3 +8,4 @@ import './TablePage/style';
 import './TagSelector/style';
 import './VerticalLayout/style';
 import './TagsPanel/style';
+import './ColumnTip/style';
