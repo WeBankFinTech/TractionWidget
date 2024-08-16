@@ -1,4 +1,4 @@
-# BTagsPanel
+# BMetricTip
 图标悬浮提示说明
 
 ## 组件注册
