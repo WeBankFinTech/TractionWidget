@@ -8,7 +8,7 @@
             :maxlength="maxlength" :showWordLimit="showWordLimit" @keyup.enter="addNewTag" @blur="addNewTag">
         </FInput>
         <FButton v-else v-show="numberLimit === 0 || tags.length < numberLimit" :disabled="disabled" class="button-nef-tag" @click="toggleTagInput">
-            <PlusOutlined />添加标签
+            <PlusOutlined />{{ tagsPanelLocalObj?.addTag }}
         </FButton>
     </div>
 </template>
@@ -20,6 +20,9 @@ import {
 import getPrefixCls from '../_util/getPrefixCls';
 import { useFormModel } from '../hooks/useModel';
 import { PlusOutlined } from '@fesjs/fes-design/icon';
+import { useLocale } from '../hooks/useLocale';
+const locale = useLocale();
+const tagsPanelLocalObj = locale.tagsPanel || {};
 
 const prefixCls = getPrefixCls('TagsPanel');
 
@@ -27,17 +30,17 @@ const props = defineProps({
     // 标签数量限制, 默认为0表示不限制，非0则限制
     numberLimit: {
         type: Number,
-        default: 0,
+        default: 0
     },
     // 标签是否不可重复
     isUnique: {
         type: Boolean,
-        defalut: false,
+        defalut: false
     },
     // 输入校验
     regex: {
         type: RegExp,
-        default: null,
+        default: null
     },
     // 校验错误提示
     regexTip: {
@@ -47,32 +50,32 @@ const props = defineProps({
     // 标签最大长度
     maxlength: {
         type: Number,
-        default: 25,
+        default: 25
     },
     // 是否展示输入长度
     showWordLimit: {
         type: Boolean,
-        default : false,
+        default: false
     },
     // 是否可编辑
     disabled: {
         type: Boolean,
-        default: false,
+        default: false
     },
     // 尺寸，可选值：small、middle、large
     size: {
         type: String,
-        default: 'middle',
+        default: 'middle'
     },
     // 主题，可选值：dark、light、plain
     effect: {
         type: String,
-        default: 'light',
+        default: 'light'
     },
     // 类型，可选值：default、success、info、warning、danger
     type: {
         type: String,
-        default: 'default',
+        default: 'default'
     },
     // 双向绑定的标签数据
     tags: {
@@ -112,16 +115,16 @@ const addNewTag = () => {
     if (notNull(tempTagInput.value)) {
         let flag = true;
         if (props.regex) {
-            flag = props.regex.test(tempTagInput.value)
+            flag = props.regex.test(tempTagInput.value);
         }
-        if( flag) {
-            if ( props.isUnique && datasource.tags.find((item: any) => item === tempTagInput.value)) {
-                FMessage.warn('不能添加重复标签！');
+        if (flag) {
+            if (props.isUnique && datasource.tags.find((item: any) => item === tempTagInput.value)) {
+                FMessage.warn(tagsPanelLocalObj.repeatTip);
                 closeInput();
                 return;
             }
-            if (props.numberLimit!== 0 && datasource.tags.length >= props.numberLimit) {
-                FMessage.warn(`不能添加超过${props.numberLimit}标签!`);
+            if (props.numberLimit !== 0 && datasource.tags.length >= props.numberLimit) {
+                FMessage.warn(`${tagsPanelLocalObj.numberLimitTip}${props.numberLimit}${tagsPanelLocalObj.tag}!`);
                 closeInput();
                 return;
             }
