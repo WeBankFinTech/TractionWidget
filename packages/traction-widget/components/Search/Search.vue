@@ -16,31 +16,31 @@
                 'gap-16': props.isLetgo
             }">
             <FSpace :size="16" v-if="!props.isLetgo">
-                <FButton type="primary" @click="handleSearch">查询</FButton>
+                <FButton type="primary" @click="handleSearch">{{searchLocalObj?.search}}</FButton>
                 <template v-if="props.isAdvance">
                     <FButton v-if="isAdvanceCount" @click="handleAdvance"
                             :class="querySelectedCount > 0 ? 'selected-count' : ''">
-                            高级筛选{{querySelectedCount > 0 ? `（已选${querySelectedCount}项）` : ''}}
+                            {{searchLocalObj?.advance}}{{querySelectedCount > 0 ? `(${searchLocalObj?.selected}${querySelectedCount}${searchLocalObj?.item})` : ''}}
                     </FButton>
                     <FButton v-else @click="handleAdvance">
-                        高级筛选
+                        {{searchLocalObj?.advance}}
                     </FButton>
                 </template>
-                <FButton v-if="props.isReset" @click="handleReset">重置</FButton>
+                <FButton v-if="props.isReset" @click="handleReset">{{searchLocalObj?.reset}}</FButton>
                 <slot name="exButton"></slot>
             </FSpace>
             <template v-else>
-                <FButton type="primary" @click="handleSearch">查询</FButton>
+                <FButton type="primary" @click="handleSearch">{{searchLocalObj?.search}}</FButton>
                 <template v-if="props.isAdvance">
                     <FButton v-if="isAdvanceCount" @click="handleAdvance"
                             :class="querySelectedCount > 0 ? 'selected-count' : ''">
-                            高级筛选{{querySelectedCount > 0 ? `（已选${querySelectedCount}项）` : ''}}
+                            {{searchLocalObj?.advance}}{{querySelectedCount > 0 ? `(${searchLocalObj?.selected} ${querySelectedCount} ${searchLocalObj?.item})` : ''}}
                     </FButton>
                     <FButton v-else @click="handleAdvance">
-                        高级筛选
+                        {{searchLocalObj?.advance}}
                     </FButton>
                 </template>
-                <FButton v-if="props.isReset" @click="handleReset">重置</FButton>
+                <FButton v-if="props.isReset" @click="handleReset">{{searchLocalObj?.reset}}</FButton>
                 <slot name="exButton"></slot>
             </template>
         </div>
@@ -52,6 +52,9 @@ import getPrefixCls from '../_util/getPrefixCls';
 import { defineProps, defineEmits, computed } from 'vue';
 import { useFormModel } from '../hooks/useModel';
 import { isBoolean, isArray, isObject } from 'lodash-es';
+import { useLocale } from '../hooks/useLocale';
+const locale = useLocale();
+const searchLocalObj = locale.SearchData || {};
 
 const props = defineProps({
     // 查询表单

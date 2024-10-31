@@ -4,7 +4,7 @@
             <div class="tip">
                 <div class="tip-text">{{ tip }}</div>
                 <div class="tip-button">
-                    <FButton v-if="actionType === 'noPermissions'" type="default" @click="logout">退出登录</FButton>
+                    <FButton v-if="actionType === 'noPermissions'" type="default" @click="logout">{{ pageLoadingLocalObj?.logout }}</FButton>
                 </div>
             </div>
         </div>
@@ -13,7 +13,7 @@
             <div class="tip">
                 <div class="tip-text">{{ tip }}</div>
                 <div class="tip-button">
-                    <FButton v-if="actionType === 'noPermissions'" type="default" @click="logout">退出登录</FButton>
+                    <FButton v-if="actionType === 'noPermissions'" type="default" @click="logout">{{ pageLoadingLocalObj?.logout }}</FButton>
                 </div>
             </div>
 
@@ -23,6 +23,9 @@
 <script setup lang="ts">
 import { computed, PropType, defineEmits } from 'vue';
 import { FButton } from '@fesjs/fes-design';
+import { useLocale } from '../hooks/useLocale';
+const locale = useLocale();
+const pageLoadingLocalObj = locale.pageLoading || {};
 const props = defineProps({
     type: {
         type: String,
@@ -38,21 +41,16 @@ const props = defineProps({
             emptyInitResult?: string,
             emptyQueryResult?: string
         }>,
-        default: () => ({
-            loading: 'Loading. . .',
-            emptyInitResult: '这里还没有数据. . .',
-            emptyQueryResult: '没有符合条件的结果. . .',
-            noPermissions: '暂无权限'
-        })
+        default: () => ({})
     }
 });
 const emits = defineEmits(['logout']);
 const type = computed(() => props.type);
 const loadingText = computed(() => ({
     loading: 'Loading. . .',
-    emptyInitResult: '这里还没有数据. . .',
-    emptyQueryResult: '没有符合条件的结果. . .',
-    noPermissions: '暂无权限',
+    emptyInitResult: pageLoadingLocalObj?.noData,
+    emptyQueryResult: pageLoadingLocalObj?.noResult,
+    noPermissions: pageLoadingLocalObj?.noPermissions,
     ...props.loadingText
 }));
 const tip = computed(() => {

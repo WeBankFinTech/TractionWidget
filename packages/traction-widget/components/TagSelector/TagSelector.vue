@@ -9,8 +9,8 @@
                 <FSelect v-model="selectedList" class="hidden-select" filterable multiple :options="props.options" @change="handleChange" :getContainer="getContainer"></FSelect>
             </div>
             <div class="tag-label">
-                <span>已选：</span>
-                <span v-if="clearable" class="clearable" @click="handleClear">全部删除</span>
+                <span>{{ tagSelectorLocalObj?.selected }}</span>
+                <span v-if="clearable" class="clearable" @click="handleClear">{{ tagSelectorLocalObj?.clearAll }}</span>
             </div>
             <div class="tag-container">
                 <FTag
@@ -30,6 +30,10 @@
 <script setup lang="ts">
 import { defineProps, defineEmits, computed, useSlots, ref } from 'vue';
 import { FTag, FSelect } from '@fesjs/fes-design';
+import { useLocale } from '../hooks/useLocale';
+
+const locale = useLocale();
+const tagSelectorLocalObj = locale.TagSelector || {};
 
 const props = defineProps({
     // 已选的数据列表

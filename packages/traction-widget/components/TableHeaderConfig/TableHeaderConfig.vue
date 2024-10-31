@@ -11,14 +11,14 @@
         @update:show="$emit('update:show', $event)"
         >
           <template #title>
-            <span>设置表格</span>
-            <span class="title-desc">(设置表格需要显示的字段信息)</span>
+            <span>{{ tableHeaderConfigLocalObj?.title }}</span>
+            <span class="title-desc">({{ tableHeaderConfigLocalObj?.titleDesc }})</span>
         </template>
         <div class="table-header-config">
             <div class="content">
                 <ul class="section-list">
                     <li v-if="activatedHeadersLocal && activatedHeadersLocal.length > 0" class="section-item">
-                        <h3 class="sub-title">已选字段</h3>
+                        <h3 class="sub-title">{{ tableHeaderConfigLocalObj?.selectedFields }}</h3>
                         <ul class="header-list">
                             <li
                                 v-for="header in activatedHeadersLocal"
@@ -29,7 +29,7 @@
                         </ul>
                     </li>
                     <li v-if="inactivatedHeadersLocal && inactivatedHeadersLocal.length > 0" class="section-item">
-                        <h3 class="sub-title">可选字段</h3>
+                        <h3 class="sub-title">{{tableHeaderConfigLocalObj?.optionalFields}}</h3>
                         <ul class="header-list">
                             <li
                                 v-for="header in inactivatedHeadersLocal"
@@ -40,8 +40,8 @@
                         </ul>
                     </li>
                     <li v-if="inactivatedHeadersLocal && inactivatedHeadersLocal.length === 0" class="section-item">
-                        <h3 class="sub-title">可选字段</h3>
-                        <div class="hint">暂无可选字段</div>
+                        <h3 class="sub-title">{{tableHeaderConfigLocalObj?.optionalFields}}</h3>
+                        <div class="hint">{{tableHeaderConfigLocalObj?.noOptionalFields}}</div>
                     </li>
                 </ul>
             </div>
@@ -57,6 +57,9 @@ import {
 } from 'vue';
 import getPrefixCls from '../_util/getPrefixCls';
 import { cloneDeep } from 'lodash-es';
+import { useLocale } from '../hooks/useLocale';
+const locale = useLocale();
+const tableHeaderConfigLocalObj = locale.TableHeaderConfig || {};
 
 export interface ColItem {
     prop: string,
