@@ -1,6 +1,6 @@
 {
   "name": "@fesjs/traction-widget",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "集合大型中台项目使用到的通用组件和工具函数",
   "main": "dist/traction-widget.min.js",
   "module": "es/components/index.js",
