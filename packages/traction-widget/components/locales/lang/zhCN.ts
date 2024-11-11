@@ -19,7 +19,9 @@ export default {
         titleDesc: '设置表格需要显示的字段信息',
         selectedFields: '已选字段',
         optionalFields: '可选字段',
-        noOptionalFields: '暂无可选字段'
+        noOptionalFields: '暂无可选字段',
+        cancel: '取消',
+        confirm: '确定'
     },
     TagSelector: {
         clearAll: '全部删除',

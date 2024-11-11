@@ -1,5 +1,5 @@
 export default {
-    name: 'en',
+    name: 'en-US',
     desc: '英文',
     pageLoading: {
         logout: 'Logout',
@@ -20,7 +20,9 @@ export default {
         titleDesc: 'Set the fields to be displayed in the table',
         selectedFields: 'Selected Fields',
         optionalFields: 'Optional Fields',
-        noOptionalFields: 'No optional fields available'
+        noOptionalFields: 'No optional fields available',
+        cancel: 'Cancel',
+        confirm: 'Confirm'
     },
     TagSelector: {
         clearAll: 'Clear All',

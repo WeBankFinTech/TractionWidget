@@ -6,6 +6,8 @@
         :width="600"
         :maskClosable="false"
         :getContainer="getContainer"
+        :okText="tableHeaderConfigLocalObj?.confirm"
+        :cancelText="tableHeaderConfigLocalObj?.cancel"
         @ok="updateHeaders"
         @cancel="reductionHeaders"
         @update:show="$emit('update:show', $event)"
