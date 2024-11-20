@@ -15,14 +15,22 @@ app.use(BHorizontalLayout);
 
 --CODE
 
+
+### 设置默认菜单项全部展开
+
+--USEEXPANDALL
+
+
 ## 参数说明
 ### BHorizontalLayout Props
 | 属性  | 说明                   | 类型                                    |  默认值                                 |是否必须|
 | ----- | ----------------------------- | ---------------------------------------- |------------------ |----- |
 | curPath | 当前路径 | String|''| 是
 | menus | 菜单列表 | Array(object)|[]| 是
+| defaultExpandAll | 是否默认展开全部菜单，当curPath有值时，defaultExpandAll将失效 | boolean|false| 否
 | isFoot | 是否展示页脚 | Boolean|true| 否
 | footText | 页脚内容 | String|WeDataSphere版权所有| 否
+
 ### BHorizontalLayout Events
 | 事件名称          | 说明                                                                                                                                            | 回调参数                                |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
