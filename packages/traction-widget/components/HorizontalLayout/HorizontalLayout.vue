@@ -12,6 +12,7 @@
                     :collapsed="isSideBarCollapse"
                     @select="onMenuClick"
                     :expandedKeys="expandedKeys"
+                    :defaultExpandAll="defaultExpandAll"
                 ></FMenu>
             </div>
             <div class="collapse-btn" @click="toggleSideBar">
@@ -48,6 +49,14 @@ const props = defineProps({
         require: true,
         default: () => []
     },
+
+    // 是否默认展开全部菜单项
+    defaultExpandAll: {
+        type: Boolean,
+        require: false,
+        default: false
+    },
+
     // 是否展示注脚
     isFoot: {
         type: Boolean,
