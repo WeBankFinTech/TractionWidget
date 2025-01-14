@@ -94,6 +94,7 @@ export default defineConfig({
                         { text: 'BSearch', link: '/components/BSearch' },
                         { text: 'BDynamicForms', link: '/components/BDynamicForms'},
                         { text: 'BMetricTip', link: '/components/BMetricTip'},
+                        { text: 'BCharts', link: '/components/BCharts'}
                     ]
                 },
                 {

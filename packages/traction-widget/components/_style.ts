@@ -9,3 +9,4 @@ import './TagSelector/style';
 import './VerticalLayout/style';
 import './TagsPanel/style';
 import './MetricTip/style';
+import './Charts/style';

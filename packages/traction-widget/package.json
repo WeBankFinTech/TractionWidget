@@ -27,7 +27,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@fesjs/fes-design": "0.8.56"
+    "@fesjs/fes-design": "0.8.56",
+    "echarts": "5.2.2"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,vue,fes,wxa}": "eslint --fix"
