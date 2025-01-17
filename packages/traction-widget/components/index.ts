@@ -11,6 +11,7 @@ import { BNavBar } from './NavBar';
 import { BNavHeader } from './NavHeader';
 import { BMetricTip } from './MetricTip';
 import { BCharts } from './Charts';
+import { BDashboard } from './Dashboard';
 
 const components = [
     BTagsPanel,
@@ -23,7 +24,8 @@ const components = [
     BNavBar,
     BNavHeader,
     BMetricTip,
-    BCharts
+    BCharts,
+    BDashboard
 ];
 
 const install = (app: any): any => {
@@ -52,7 +54,8 @@ export {
     BNavBar,
     BNavHeader,
     BMetricTip,
-    BCharts
+    BCharts,
+    BDashboard
 };
 
 export default {
@@ -74,5 +77,6 @@ export default {
     BNavBar,
     BNavHeader,
     BMetricTip,
-    BCharts
+    BCharts,
+    BDashboard
 };

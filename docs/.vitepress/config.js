@@ -106,6 +106,7 @@ export default defineConfig({
                         { text: 'BTablePage', link: '/components/BTablePage' },
                         { text: 'BNavBar', link: '/components/BNavBar'},
                         { text: 'BNavHeader', link: '/components/BNavHeader'},
+                        { text: 'BDashboard', link: '/components/BDashboard'},
                     ]
                 }
             ],
