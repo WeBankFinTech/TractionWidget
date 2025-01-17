@@ -34,5 +34,12 @@ export default {
         repeatTip: 'Cannot add duplicate tags!',
         numberLimitTip: 'Cannot add more than ',
         tag: 'tags'
+    },
+    Charts: {
+        lastUpdate: 'Last Update: ',
+        last30Days: 'Last 30 Days',
+        last7Days: 'Last 7 Days',
+        date: 'Date: ',
+        total: 'Total: '
     }
 };

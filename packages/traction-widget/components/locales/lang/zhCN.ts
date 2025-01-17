@@ -33,5 +33,12 @@ export default {
         repeatTip: '不能添加重复标签！',
         numberLimitTip: '不能添加超过',
         tag: '标签'
+    },
+    Charts: {
+        lastUpdate: '最后更新：',
+        last30Days: '最近30天',
+        last7Days: '最近7天',
+        date: '日期：',
+        total: '总计：'
     }
 };
