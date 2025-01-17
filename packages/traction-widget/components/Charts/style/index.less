@@ -1,9 +1,43 @@
-.wd-content-body {
+.chart-body {
     width: 100%;
+  
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  
+  .title-section {
+    display: flex;
+    flex-direction: column;
+    color: #999;
+    gap: 8px;
+  }
+  
+  .update-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .update-time {
+    font-size: 12px;
+  }
+  
+  .refresh-icon {
+    margin-left: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #999;
+    &:hover {
+      color: #5384ff;
+    }
   }
   
   .chart-title {
-    margin-bottom: 16px;
+    margin: 0;
+    font-size: 16px;
+    color: #333;
   }
   
   .date-range {
@@ -39,3 +73,4 @@
     border-color: #5384ff;
     color: #5384ff;
   }
+}
