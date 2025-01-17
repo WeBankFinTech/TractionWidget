@@ -7,7 +7,13 @@ type Locale = Record<string, any>;
 
 export function useLocale (): Locale {
     const locale = ref<Locale>({});
-    const storedLocale = localStorage.getItem('fes_locale');
+    let storedLocale = 'zh-CN';  // 默认使用中文
+    
+    // 只在浏览器环境下读取 localStorage
+    if (typeof window !== 'undefined') {
+        storedLocale = localStorage.getItem('fes_locale') || 'zh-CN';
+    }
+
     if (storedLocale === 'en-US') {
         locale.value = enUS;
     } else {
