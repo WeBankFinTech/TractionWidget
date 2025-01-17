@@ -1,6 +1,10 @@
 import { onMounted, onUnmounted, Ref, ref, watch, markRaw } from 'vue';
 import echarts from './useEcharts';
 import type { EChartsOption, TooltipComponentFormatterCallback } from 'echarts';
+import { useLocale } from '../hooks/useLocale';
+
+const locale = useLocale();
+const chartsLocale = locale.Charts;
 
 export interface BarStyle {
     color: string;
@@ -47,6 +51,13 @@ export function useChart(
 
     const transformData = (data: any[]) => {
         const xAxisData = data.map(item => item[config.xAxisField]);
+        // 计算每个系列的总和
+        const seriesTotal = config.series.reduce((acc, series) => {
+            const total = data.reduce((sum, item) => sum + (Number(item[series.field]) || 0), 0);
+            acc[series.name] = total;
+            return acc;
+        }, {} as Record<string, number>);
+
         // 计算最大值来确定左侧留白
         let maxSum = 0;
         let leftGridSize = 16; // 基础留白大小
@@ -78,14 +89,15 @@ export function useChart(
         return {
             xAxisData,
             series,
-            leftGridSize
+            leftGridSize,
+            seriesTotal
         };
     };
     const genTooltipStr = (tempData: any[]) => {
         const showList = tempData.map((item: { value: any; seriesName: any; }) => ({ value: item.value, name: item.seriesName }));
-        const dateStr = showList.length ? `日期：${tempData[0].name} <br />` : '';
+        const dateStr = showList.length ? `${chartsLocale.date}${tempData[0].name} <br />` : '';
         const total = showList.reduce((pre: any, cur: { value: any; }) => pre + cur.value, 0);
-        const totalStr = showList.length ? `总计：${total} <br />` : '';
+        const totalStr = showList.length ? `${chartsLocale.total}${total} <br />` : '';
         const showListStr = showList.reduce((pre: any, cur: { name: any; value: any; }) => `${pre}${cur.name}: ${cur.value}<br />`, '');
         return dateStr + totalStr + showListStr;
     };
@@ -95,7 +107,7 @@ export function useChart(
         try {
             loading.value = true;
             const data = await config.fetchData(startDate.value, endDate.value);
-            const { xAxisData, series, leftGridSize } = transformData(data);
+            const { xAxisData, series, leftGridSize, seriesTotal } = transformData(data);
 
             const option: EChartsOption = {
                 backgroundColor: '#fff',
@@ -141,6 +153,9 @@ export function useChart(
                     itemGap: 32,
                     itemStyle: {
                         borderWidth: 1
+                    },
+                    formatter: (name) => {
+                        return `${name}(${seriesTotal[name]})`;
                     },
                     data: config.series.map(item => ({
                         name: item.name,
