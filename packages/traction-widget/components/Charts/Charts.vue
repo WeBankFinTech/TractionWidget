@@ -98,3 +98,9 @@ const handleRefresh = async () => {
     lastUpdateTime.value = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
 };
 </script>
+
+<script lang="ts">
+export default {
+    name: 'BCharts'
+};
+</script>
