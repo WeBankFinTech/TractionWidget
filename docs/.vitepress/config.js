@@ -1,4 +1,3 @@
-
 import { defineConfig } from 'vitepress';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
@@ -33,8 +32,10 @@ export default defineConfig({
         },
         ssr: {
             // lodash-es 模块是 esm，ssr 渲染的时候编译成 cjs 的引入方式，会引发 nodejs 的模块加载异常错误
-            noExternal: ['lodash-es', '@fesjs/fes-design', '@fesjs/fes-design/icon'],
-            external: ['@vue/repl']
+            noExternal: ['lodash-es', '@fesjs/fes-design', '@fesjs/fes-design/icon', 'echarts', 'zrender'],
+            external: [
+                '@vue/repl',
+            ]
         },
         resolve: {
             extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
