@@ -29,7 +29,7 @@
 import { ref, onMounted, onUnmounted, watch, markRaw } from 'vue';
 import { FDatePicker, FButton } from '@fesjs/fes-design';
 import { ReloadOutlined } from '@fesjs/fes-design/icon';
-import type { EChartsOption, TooltipComponentFormatterCallback } from 'echarts';
+import type { EChartsOption, TooltipComponentFormatterCallback, BarSeriesOption } from 'echarts';
 import echarts from './useEcharts';
 import {
     getYear, getMonth, getDate, subDays, differenceInDays,
@@ -47,11 +47,11 @@ interface BarStyle {
 
 interface ChartConfig {
     title: string;
-    series: {
+    series: (Pick<BarSeriesOption, Exclude<keyof BarSeriesOption, 'type' | 'name' | 'data' | 'itemStyle'>> & {
         field: string;
         name: string;
         itemStyle: BarStyle;
-    }[];
+    })[];
     fetchData: (startTime: number, endTime: number) => Promise<any[]>;
     xAxisField: string;
     tooltipFormatter?: (params: any[]) => string;
@@ -151,7 +151,10 @@ const transformData = (data: any[]) => {
         itemStyle: item.itemStyle,
         emphasis: {
             focus: 'series' as const
-        }
+        },
+        ...Object.entries(item)
+            .filter(([key]) => !['field', 'name', 'itemStyle'].includes(key))
+            .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
     }));
     
     return {

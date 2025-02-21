@@ -20,7 +20,7 @@ const chartConfig = {
             itemStyle: {
                 color: '#FEEEEE',
                 borderColor: '#FF4D4F'
-            }
+            },
         },
         {
             field: 'major',
