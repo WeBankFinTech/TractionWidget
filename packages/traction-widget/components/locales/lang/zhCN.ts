@@ -10,8 +10,9 @@ export default {
     SearchData: {
         search: '查询',
         advance: '高级筛选',
-        selected: '已选：',
+        selected: '已选',
         item: '项',
+        items: '项',
         reset: '重置'
     },
     TableHeaderConfig: {
