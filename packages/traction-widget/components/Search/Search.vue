@@ -20,7 +20,7 @@
                 <template v-if="props.isAdvance">
                     <FButton v-if="isAdvanceCount" @click="handleAdvance"
                             :class="querySelectedCount > 0 ? 'selected-count' : ''">
-                            {{searchLocalObj?.advance}}{{querySelectedCount > 0 ? `(${searchLocalObj?.selected}${querySelectedCount}${searchLocalObj?.item})` : ''}}
+                            {{querySelectedCountText()}}
                     </FButton>
                     <FButton v-else @click="handleAdvance">
                         {{searchLocalObj?.advance}}
@@ -34,7 +34,7 @@
                 <template v-if="props.isAdvance">
                     <FButton v-if="isAdvanceCount" @click="handleAdvance"
                             :class="querySelectedCount > 0 ? 'selected-count' : ''">
-                            {{searchLocalObj?.advance}}{{querySelectedCount > 0 ? `(${searchLocalObj?.selected} ${querySelectedCount} ${searchLocalObj?.item})` : ''}}
+                            {{querySelectedCountText()}}
                     </FButton>
                     <FButton v-else @click="handleAdvance">
                         {{searchLocalObj?.advance}}
@@ -116,7 +116,6 @@ const emit = defineEmits(['search', 'reset', 'advance', 'update:form', 'update:a
 const { datasource } = useFormModel(props, emit, ['form', 'advanceForm']);
 
 const prefixCls = getPrefixCls('search');
-
 // 筛选条件数量的watch
 const querySelectedCount = computed(() => {
     if (!props.isCustomAdvanceCount) {
@@ -130,7 +129,12 @@ const querySelectedCount = computed(() => {
         return props.advanceCountFunc(props.advanceForm);
     }
 });
-
+const querySelectedCountText = () => {
+    const str = searchLocalObj?.advance;
+    if (querySelectedCount.value === 0) return str;
+    if (querySelectedCount.value === 1) return `${str}(${searchLocalObj?.selected}${querySelectedCount.value}${searchLocalObj?.item})`;
+    if (querySelectedCount.value > 1) return `${str}(${searchLocalObj?.selected}${querySelectedCount.value}${searchLocalObj?.items})`;
+};
 const handleSearch = () => {
     emit('search', datasource.form);
 };
