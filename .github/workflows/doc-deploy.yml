@@ -1,9 +1,8 @@
 name: TXDeploy
 on:
-  pull_request:
   push:
     branches:
-      - docs
+      - master
     paths:
       - 'packages/**/**'
       - 'docs/**/**'

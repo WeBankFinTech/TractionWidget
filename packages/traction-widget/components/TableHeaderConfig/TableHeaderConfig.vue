@@ -138,7 +138,12 @@ try {
         const cacheConfig = localStorage.getItem(`${props.type}_table_config`);
         if (cacheConfig != null) {
             console.log('存在表格配置的缓存信息: ', cacheConfig);
-            tableHeaders.value = JSON.parse(cacheConfig).active;
+            const cachedProps = JSON.parse(cacheConfig).active;
+            // 使用缓存的prop去匹配用户传入的完整配置
+            tableHeaders.value = cachedProps.map(cached => {
+                const matchedHeader = originTableHeaders.value.find(header => header.prop === cached.prop);
+                return matchedHeader || cached; // 如果找不到匹配项，使用缓存数据作为后备
+            });
         } else {
             for (let i = 0; i < originTableHeaders.value.length; i++) {
                 if (!(originTableHeaders.value[i].hidden ?? false)) {
@@ -168,7 +173,6 @@ try {
 } catch (err) {
     console.warn(err);
 }
-
 const ACTIVES = tableHeaders.value.map((item) => {
     const target = originTableHeaders.value.find((subItem) => {
         return subItem.prop === item.prop;

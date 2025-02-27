@@ -11,8 +11,9 @@ export default {
         search: 'Search',
         advance: 'Advanced Filter',
         advanceCount: 'Advanced Filter (selected {count} items)',
-        selected: 'selected',
-        item: 'items',
+        selected: 'selected ',
+        item: ' item',
+        items: ' items',
         reset: 'Reset'
     },
     TableHeaderConfig: {
