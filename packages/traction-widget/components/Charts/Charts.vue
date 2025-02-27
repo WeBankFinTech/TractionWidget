@@ -192,8 +192,6 @@ const updateChart = async () => {
                 top: 17,
                 right: 0,
                 left: leftGridSize,
-                bottom: 95,
-                containLabel: true
             },
             tooltip: {
                 trigger: 'axis',
