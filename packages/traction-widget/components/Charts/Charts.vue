@@ -211,7 +211,7 @@ const updateChart = async () => {
                 endValue: 6,
                 xAxisIndex: [0],
                 handleSize: 0,
-                height: 5,
+                height: 8,
                 bottom: 70,
                 borderColor: 'transparent',
                 fillerColor: 'transparent',
@@ -219,7 +219,8 @@ const updateChart = async () => {
                 showDataShadow: false,
                 showDetail: false,
                 realtime: true,
-                filterMode: 'filter'
+                filterMode: 'filter',
+                moveHandleSize: 15
             },
             legend: {
                 bottom: 0,
