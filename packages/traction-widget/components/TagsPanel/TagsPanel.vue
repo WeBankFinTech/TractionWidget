@@ -1,9 +1,14 @@
 <template>
     <div :class="prefixCls" class="wd-tags-panel">
-        <FTag v-for="tag in tags" :key="tag" :closable="!disabled" @close="deleteTag(tag)" :size="size" :type="type" :effect="effect">
-            <FEllipsis :content="tag" style="max-width: 240px">
-            </FEllipsis>
-        </FTag>
+        <div v-for="(tag,index) in tags" :key="index">
+            <FTag v-if="!showTagInputArray[index]" @dblclick="startEdit(index)" :closable="!disabled" @close="deleteTag(index)" :size="size" :type="type" :effect="effect">
+                <FEllipsis :content="tag" style="max-width: 240px">
+                </FEllipsis>
+            </FTag>
+            <FInput v-else :ref="(el) => { if (el) editTagInputRefs[index] = el as any }" v-model="editTempTagInput" class="input-in-tag input-nef-tag" size="small"
+                :maxlength="maxlength" :showWordLimit="showWordLimit" @keydown.escape="cancelEdit(index)" @keyup.enter="commitEdit(index)" @blur="commitEdit(index)">
+        </FInput>
+        </div>
         <FInput v-if="showTagInput" ref="tagInputRef" v-model="tempTagInput" class="input-nef-tag" size="small"
             :maxlength="maxlength" :showWordLimit="showWordLimit" @keyup.enter="addNewTag" @blur="addNewTag">
         </FInput>
@@ -62,6 +67,11 @@ const props = defineProps({
         type: Boolean,
         default: false
     },
+    // 是否可双击编辑标签
+    editabled: {
+        type: Boolean,
+        default: false
+    },
     // 尺寸，可选值：small、middle、large
     size: {
         type: String,
@@ -87,18 +97,42 @@ const props = defineProps({
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['update:tags']);
 const { datasource } = useFormModel(props, emit, ['tags']);
+const showTagInputArray = ref(datasource.tags.map(() => false));
+const editTagInputRefs = ref<InstanceType<typeof FInput>[]>([] as any[]);
+const editTempTagInput = ref<string>('');
+
+// 开始编辑
+const startEdit = (index: number) => {
+    if (!props.editabled) return;
+    editTempTagInput.value = datasource.tags[index];
+    showTagInputArray.value.splice(index, 1, true);
+    nextTick(() => {
+        editTagInputRefs.value[index].focus();
+    });
+};
+
+// 提交编辑
+const commitEdit = (index: number) => {
+    const newText = editTempTagInput.value;
+    showTagInputArray.value.splice(index, 1, false);
+    datasource.tags.splice(index, 1, newText);
+};
+
+// 取消编辑
+const cancelEdit = (index: number) => {
+    showTagInputArray.value.splice(index, 1, false);
+};
 
 const showTagInput = ref<boolean>(false);
 
 const tempTagInput = ref<string>('');
 const currentInstance = getCurrentInstance();
-const deleteTag = async (tag: string) => {
-    const index = datasource.tags.indexOf(tag);
+const deleteTag = async (index: number) => {
     datasource.tags.splice(index, 1);
     console.log(datasource.tags);
     await currentInstance?.proxy?.$forceUpdate();
 };
-const notNull = (value: string) => {
+const notNull = (value: string) => { /*  */
     if (!value) {
         return false;
     }
