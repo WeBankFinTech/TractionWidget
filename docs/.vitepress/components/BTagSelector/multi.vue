@@ -1,5 +1,5 @@
 <template>
-    <BTagSelector v-model:selectedList="flavour" :options="flavourList" label="计数" tagKey="value" @selectorChange="handleChange">
+    <BTagSelector v-model:selectedList="flavour" :options="flavourList.length > 0 ? flavourList : [{ value: '烤鸭我喜欢有葱丝的', label: '葱丝' }, { value: '烤鸭我喜欢有黄瓜丝的', label: '黄瓜丝' }]" label="计数" tagKey="value" @selectorChange="handleChange">
          <template v-slot:header>
              <div class="title-text">选中tag计数: {{ flavour.length }}</div>
          </template>
@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { BTagSelector } from '@fesjs/traction-widget';
 import { FSelect } from '@fesjs/fes-design';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 // 选择器所绑定的数据
 const city = ref<string>('');
@@ -60,6 +60,11 @@ const handleCityChange = () => {
 const handleChange = (val: any) => {
     console.log(val);
 };
+
+onMounted(() => {
+    flavour.value = ['烤鸭我喜欢有葱丝的', '烤鸭我喜欢有黄瓜丝的'];
+});
+
 </script>
 <style scoped>
 .title-text {
