@@ -28,7 +28,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { defineProps, defineEmits, computed, useSlots, ref } from 'vue';
+import { defineProps, defineEmits, computed, useSlots, ref, watch } from 'vue';
 import { FTag, FSelect } from '@fesjs/fes-design';
 import { useLocale } from '../hooks/useLocale';
 
@@ -81,14 +81,15 @@ const deleteTag = (item: any, index: number) => {
 const cacheOptions = ref<any[]>([]);
 const isSlotHeader = computed(() => !!useSlots().header);
 const handleChange = (val: any) => {
-    cacheOptions.value.push(...props.options);
+    emit('selectorChange', val);
+};
+watch(() => props.options, (oldVal, newVal) => {
+    cacheOptions.value.push(...(props.options as any[]));
+    // 基于value去重，保证cacheOptions能保证最小
     cacheOptions.value = cacheOptions.value.filter((item, index, self) => {
         return self.findIndex(el => el.value === item.value) === index;
     });
-    cacheOptions.value = cacheOptions.value.filter(item => val.includes(item.value));
-    emit('selectorChange', val);
-};
-
+}, { immediate: true });
 const handleClear = () => {
     selectedList.value = [];
     emit('clearAll');
