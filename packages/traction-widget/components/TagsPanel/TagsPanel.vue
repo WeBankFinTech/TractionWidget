@@ -129,6 +129,7 @@ const tempTagInput = ref<string>('');
 const currentInstance = getCurrentInstance();
 const deleteTag = async (index: number) => {
     datasource.tags.splice(index, 1);
+    showTagInputArray.value.splice(index, 1);
     console.log(datasource.tags);
     await currentInstance?.proxy?.$forceUpdate();
 };
@@ -164,8 +165,10 @@ const addNewTag = () => {
             }
             if (datasource.tags) {
                 datasource.tags.push(tempTagInput.value);
+                showTagInputArray.value.push(false);
             } else {
                 datasource.tags = [tempTagInput.value];
+                showTagInputArray.value = [false];
             }
         } else {
             FMessage.warning(props.regexTip);
