@@ -97,7 +97,7 @@ const props = defineProps({
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['update:tags']);
 const { datasource } = useFormModel(props, emit, ['tags']);
-const showTagInputArray = ref(datasource.tags.map(() => false));
+const showTagInputArray = ref(datasource?.tags?.map(() => false) || []);
 const editTagInputRefs = ref<InstanceType<typeof FInput>[]>([] as any[]);
 const editTempTagInput = ref<string>('');
 
