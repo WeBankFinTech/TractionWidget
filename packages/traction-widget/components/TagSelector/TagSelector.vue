@@ -21,7 +21,7 @@
                     closable
                     @close="deleteTag(item, index)"
                 >
-                    {{ cacheOptions.find((p) => p.value === item)[props.tagKey] }}
+                    {{ cacheOptions.find((p) => p.value === item)?.[props.tagKey] || '' }}
                 </FTag>
             </div>
         </div>
