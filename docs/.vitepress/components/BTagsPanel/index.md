@@ -20,6 +20,11 @@ app.use(BTagsPanel);
 
 --USEDISABLED
 
+### 双击编辑标签
+允许通过双击标签编辑标签
+
+--USEEDITABLED
+
 ### 长度限制
 支持限制单标签长度，样例设置标签最大长度为8,设置展示当前输入长度。
 --USElIMIT
@@ -50,6 +55,7 @@ app.use(BTagsPanel);
 | effect | 主题，可选值：dark、light、plain | string|light|
 | type |  类型，可选值：default、success、info、warning、danger | string|default|
 | disabled | 是否不可编辑 | boolean|false|
+| editabled | 是否支持双击标签编辑标签内容 | boolean|false|
 | maxlength | 单标签最大长度 | number|25|
 | showWordLimit | 是否显示输入内容长度统计 | boolean|false|
 | regex | 是否自定义输入标签校验 | string|''|
